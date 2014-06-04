@@ -5,9 +5,14 @@ title: Luis Ashurei's personal website at GitHub Page
 
 <h3>Latest Post</h3>
 
-
 {% for post in site.posts %}
-　　<p>
-　　  {{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a>
-　　</p>
+  {% assign is_test_post = false %}
+  {% if post.id contains 'test' %}
+    {% assign is_test_post = true %}
+　{% endif %}
+　{% if is_test_post != true %}
+  　<p>
+      {{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a>
+  　</p>
+　{% endif %}
 {% endfor %}
