@@ -10,7 +10,7 @@ title: Luis Ashurei's personal website at GitHub Page
   {% if post.id contains 'test' %}
     {% assign is_test_post = true %}
 　{% endif %}
-　{% if post.hide != 'true' %}
+　{% if post.index %}
   　<p>
       {{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a>
   　</p>
