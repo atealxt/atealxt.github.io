@@ -20,19 +20,23 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="/"><h1>Luis Ashurei</h1></a>
-        <p>IT Tech, Love Life</p>
-        <p class="view">
-          <a href="https://github.com/atealxt">GitHub</a> |
-          <a href="https://twitter.com/atealxt">Twitter</a> |
-          <a href="http://atealxt.appspot.com/">GAE</a> 
-        </p>
+        {% if page.index %}
+          <a href="/"><h1>Luis Ashurei</h1></a>
+          <p>IT Tech, Love Life</p>
+          <p class="view">
+            <a href="https://github.com/atealxt">GitHub</a> |
+            <a href="https://twitter.com/atealxt">Twitter</a> |
+            <a href="http://atealxt.appspot.com/">GAE</a> 
+          </p>
+        {% endif %}
       </header>
       <section>
         {{ content }}
       </section>
       <footer>
-        <p><small>Hosted on GitHub Pages</small></p>
+        {% if page.index %}
+          <p><small>Hosted on GitHub Pages</small></p>
+        {% endif %}
       </footer>
     </div>
     <script src="/javascripts/scale.fix.js"></script>
