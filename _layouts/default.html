@@ -36,6 +36,9 @@
       </header>
       <section>
         {{ content }}
+        {% if page.date %}
+          <p>{{ page.date | date_to_string }}</p>
+        {% endif %}
       </section>
       <footer>
         {% if page.index %}
