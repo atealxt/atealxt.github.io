@@ -12,8 +12,6 @@ index: true
 　{% if post.index %}
   　<p>
       {{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a>
-      <br>
-      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
   　</p>
 　{% endif %}
 {% endfor %}
