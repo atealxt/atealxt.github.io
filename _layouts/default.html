@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    {% if !page.index %}
+    {% unless page.index %}
       <meta name="robots" content="noindex, nofollow">
-    {% endif %}
+    {% endunless %}
     <title>{{ page.title }}</title>
     {% if page.description != '' %}
       <meta name="description" content="{{ page.description | escape }}" />
