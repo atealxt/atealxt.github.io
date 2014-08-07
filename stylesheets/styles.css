@@ -103,7 +103,7 @@ header {
 
 header ul {
   list-style:none;
-  height:40px;
+  /*height:40px;*/
   
   padding:0;
   
@@ -122,18 +122,19 @@ header ul {
 }
 
 header li {
-  width:89px;
-  float:left;
-  border-right:1px solid #d2d2d2;
-  height:40px;
+  /*width:89px;*/
+  /*float:left;*/
+  /*border-right:1px solid #d2d2d2;*/
+  /*height:40px;*/
+  border-left:1px solid #fff;
 }
 
 header ul a {
   line-height:1;
-  font-size:11px;
-  color:#999;
-  display:block;
-  text-align:center;
+  /*font-size:11px;*/
+  color:black;
+  /*display:block;*/
+  text-align:left;
   padding-top:6px;
   height:40px;
 }
@@ -143,15 +144,15 @@ strong {
   font-weight:700;
 }
 
-header ul li + li {
-  width:88px;
-  border-left:1px solid #fff;
-}
+/*header ul li + li {*/
+/*  width:88px;*/
+/*  border-left:1px solid #fff;*/
+/*}*/
 
-header ul li + li + li {
-  border-right:none;
-  width:89px;
-}
+/*header ul li + li + li {*/
+/*  border-right:none;*/
+/*  width:89px;*/
+/*}*/
 
 header ul a strong {
   font-size:14px;
