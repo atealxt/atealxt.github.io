@@ -31,6 +31,7 @@
           <a href="http://atealxt.appspot.com/">GAE</a> |
           atealxt at gmail.com
         </p>
+        <p id="navTree"></p>
       </header>
       <section>
         {% if page.date %}
@@ -43,6 +44,24 @@
       </footer>
     </div>
     <script src="/javascripts/scale.fix.js"></script>
+    <script type="text/javascript">
+    (function (win) {
+    	if (win.innerWidth <= 480) {
+    		return;
+    	}
+    	var links = document.getElementsByClassName("anchor"), html = "";
+    	if (links.length <= 1) {
+    		return;
+    	}
+    	html += "<ul>";
+        for (var i = 0; i < links.length; i++) {
+        	html += "<li><a href='" + links[i].getAttribute("href") + "'>" + links[i].nextSibling.textContent + "</a></li>";
+        }
+        html += "</ul>";
+        document.getElementById("asd").innerHTML = html;
+    
+    })(window);
+    </script>
     
   </body>
 </html>
