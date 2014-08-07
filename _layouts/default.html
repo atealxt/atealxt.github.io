@@ -23,16 +23,14 @@
   <body>
     <div class="wrapper">
       <header>
-        {% if page.index %}
-          <a href="/"><h1>Luis Ashurei</h1></a>
-          <p>IT Tech, Love Life</p>
-          <p class="view">
-            <a href="https://github.com/atealxt">GitHub</a> |
-            <a href="https://twitter.com/atealxt">Twitter</a> |
-            <a href="http://atealxt.appspot.com/">GAE</a> |
-            atealxt at gmail.com
-          </p>
-        {% endif %}
+        <a href="/"><h1>Luis Ashurei</h1></a>
+        <p>IT Tech, Love Life</p>
+        <p class="view">
+          <a href="https://github.com/atealxt">GitHub</a> |
+          <a href="https://twitter.com/atealxt">Twitter</a> |
+          <a href="http://atealxt.appspot.com/">GAE</a> |
+          atealxt at gmail.com
+        </p>
       </header>
       <section>
         {% if page.date %}
@@ -41,9 +39,7 @@
         {{ content }}
       </section>
       <footer>
-        {% if page.index %}
-          <p><small>Hosted on GitHub Pages</small></p>
-        {% endif %}
+        <p><small>Hosted on GitHub Pages</small></p>
       </footer>
     </div>
     <script src="/javascripts/scale.fix.js"></script>
