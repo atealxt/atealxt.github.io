@@ -38,6 +38,11 @@
           <p>{{ page.date | date_to_string }}</p>
         {% endif %}
         {{ content }}
+        {% if page.comments == 'duoshuo' %}
+          {% include duoshuo.html %}
+        {% elsif page.comments == 'disqus' %}
+          {% include disqus.html %}
+        {% endif %}
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages</small></p>
