@@ -24,6 +24,36 @@ Record properties
 </h3>
 
 <p>
+One entity per index. <br>
+Generally speaking, record properties will only contains global common fields.
+But put diff types together for search, could be a big table with dozens of columns.
+So for original data prepared index, may consider to use column-oriented NoSQL.
+</p>
+
+<p>
+As a eCommerce example, sku properties would include:
+sku id, 
+sku name,
+brand id,
+brand name,
+catalogs and categories (one per property),
+default catalog and category (for navigation and bread crumb),
+alternate skus,
+start and end date,
+family sku number (group),
+bunch of keywords for search,
+and any other properties need to save.
+
+Note: properties must not include:
+price (but range could be, relate within record dimensions), stock status.
+In another word, do not include properties change frequently.
+</p>
+
+<p>
+Some search engine like Solr support generate indexes via rdb mapping, this is very useful for startup of product.
+But it become less-use when product grew up to a large-scale system. 
+Build a new index loader for huge and complex data is required. 
+The loader should well-design for data split, schedulable, push and/or poll.
 </p>
 
 <h3>
