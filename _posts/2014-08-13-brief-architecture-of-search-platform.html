@@ -68,6 +68,17 @@ Facet (dimention)
 </h3>
 
 <p>
+System would have thousands of categories. 
+Single record may point to more than one, which should map to any category if related.
+<br>
+Like a laptop, have general product category (Product -> Technology -> Computers), and some particular detail (I call "Feature") such as memory, cpu.
+</p>
+
+<p>
+Both category and feature are logically the same, which called Dimention.
+The relationship of dimentions is actually a tree, usually save in a single table of database, and could be represent as array of linked list in program's memory.
+<br>
+Leaf-node dimentions are saving in record properties, to serve facet query.
 </p>
 
 <h3>
