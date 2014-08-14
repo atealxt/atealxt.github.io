@@ -13,7 +13,8 @@ comments: disqus
 </h3>
 
 <p>
-This article is about search platform architecture/design note for my latest several years experiences.
+This article is about search platform architecture/design note for my latest years experiences,
+no involved detail of search algorithm or indexing.
 <br>
 A search platform include two parts: search engine and management tools. I will explain fine-separately point by point.
 </p>
@@ -56,7 +57,7 @@ In another word, do not include properties change frequently.
 </p>
 
 <p>
-Some search engine like Solr support generate indexes via rdb mapping, this is very useful for startup of product.
+Some search engine like <a href="http://lucene.apache.org/solr/">Solr</a> support generate indexes via rdb mapping, this is very useful for startup of product.
 But it become less-use when product grew up to a large-scale system. <br>
 Build a new index loader for huge and complex data is required. 
 The loader should well-design for data split, schedulable, push and/or poll.
@@ -70,7 +71,9 @@ Facet (dimention)
 <p>
 System would have thousands of categories. 
 Single record may point to more than one, which should map to any category if related.
-<br>
+</p>
+
+<p>
 Like a laptop, have general product category (Product -> Technology -> Computers), and some particular detail (I call "Feature") such as memory, cpu.
 </p>
 
