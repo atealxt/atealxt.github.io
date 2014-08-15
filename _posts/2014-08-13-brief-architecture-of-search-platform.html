@@ -49,7 +49,7 @@ As a eCommerce example, sku properties would include:
 </ul>
 
 <strong>Note:</strong> properties must not include:
-price (but range could be, relate within record dimensions), stock status.
+price (but range could be, relate within record nsions), stock status.
 <br>
 In another word, do not include properties change frequently.
 </p>
@@ -63,7 +63,7 @@ The loader should well-design for data split, schedulable, push and/or poll.
 
 <h3>
 <a href="#facet" name="facet" class="anchor"><span class="octicon octicon-link"></span></a>
-Facet (dimention)
+Facet (dimension)
 </h3>
 
 <p>
@@ -76,10 +76,10 @@ Like a laptop, have general product category (Product -> Technology -> Computers
 </p>
 
 <p>
-Both category and feature are logically the same, which called Dimention.
-The relationship of dimentions is actually a tree, usually save in a single table of database, and could be represent as a hash of arrays in program's memory.
+Both category and feature are logically the same, which called Dimension.
+The relationship of dimensions is actually a tree, usually save in a single table of database, and could be represent as a hash of arrays in program's memory.
 <br>
-Leaf-node dimentions are saving in record properties, to serve facet query.
+Leaf-node dimensions are saving in record properties, to serve facet query.
 </p>
 
 <h3>
@@ -88,6 +88,18 @@ Search and Browse
 </h3>
 
 <p>
+Web-styled application usually have two entrance: Search and Browse.
+</p>
+
+<p>
+Search Mode: which is a html text input.<br>
+System parse user term, then query into record properties. Should have place to predefine/modify logic and property hit rank (Server Side Algorithm).
+</p>
+
+<p>
+Browse Mode: a friendly navigation guide for user.<br>
+List dimension id and links (of course hit records as well) layer by layer, util leaf-node.
+Fetch records with all leaf id calculated by current layer.
 </p>
 
 <h3>
