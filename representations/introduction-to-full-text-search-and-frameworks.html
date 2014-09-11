@@ -1,0 +1,593 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Introduction to Full Text Search and Frameworks</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+
+    <link href="css/font.css" rel="stylesheet" />
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="start" class="step slide" data-x="0">
+        <q>Introduction to <br>Full Text Search and Frameworks</q>
+        <h3 class="author"><a href="https://twitter.com/atealxt">@atealxt</a></h3>
+    </div>
+
+    <div class="step slide" data-x="1000">
+        <h1>Agenda</h1><hr>
+        <p>
+            <ul>
+                <li>Full Text Search</li>
+                <li>Frameworks</li>
+                <li>Structure</li>
+                <li>Indexing &amp; Search</li>
+                <li>Features</li>
+                <li>Evaluating</li>
+                <li>Reference</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="2000">
+        <h1>Full Text Search</h1><hr>        
+
+        <p>Serial Scanning</p>
+        <ul>
+            <li>String.indexOf</li>
+            <li>Select * from PRODUCT t where DESCRIPTION like '%Paper%';</li>
+            <li>ps -ef|grep java</li>
+        </ul>
+    </div>
+
+    <div class="step slide" data-x="2000">
+        <h1>Full Text Search</h1><hr>        
+
+        <p>Serial Scanning</p>
+        <ul>
+            <li>String.indexOf</li>
+            <li>Select * from PRODUCT t where DESCRIPTION like '%Paper%';</li>
+            <li>ps -ef|grep java</li>
+        </ul>
+        <br>
+
+        <p>Full Text Search</p>
+        <p>In a full-text search, a <a href="http://en.wikipedia.org/wiki/Search_engine">search engine</a> examines all of the words in every stored document as it tries to match search criteria (text specified by a user).</p>
+        <p class="pRefer">—— wikipedia</p>
+    </div>
+
+    <div class="step slide" data-x="3000">
+        <h1>Full Text Search</h1><hr>
+        <p>
+            <img width="400" height="490" src="img/Lucene in action 1.png">
+            <img width="300" height="490" src="img/Lucene in action 2.png">
+        </p>
+        <p class="pRefer">—— Lucene in Action</p>
+    </div>
+
+    <div class="step slide" data-x="4000">
+        <h1>Full Text Search</h1><hr>
+        <p>
+            <img width="800" height="490" class="tooltip" title="Sample documents and resulting inverted index" src="img/inverted-index.svg">
+        </p>
+        <p class="pRefer">—— <a href="https://www.found.no/foundation/elasticsearch-from-the-bottom-up/">Elasticsearch from the Bottom Up, Part 1</a></p>
+    </div>
+
+    <div class="step slide" data-x="5000">
+        <h1>Frameworks</h1><hr>
+        <p>
+            <ul>
+                <li><a href="http://sphinxsearch.com/">Sphinx</a></li>
+                <li><a href="http://hibernate.org/search/">Hibernate Search</a></li>
+                <li><a href="http://nutch.apache.org/">Apache Nutch</a></li>
+                <li><a href="http://lucene.apache.org/">Apache Lucene</a></li>
+                <li><a href="http://lucene.apache.org/solr/">Apache Solr</a></li>
+                <li><a href="http://www.elasticsearch.org/">Elasticsearch</a></li>
+                <li><a href="http://www.oracle.com/us/products/applications/commerce/commerce-platform/overview/index.html">Endeca</a></li>
+                <li><a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cloudera-enterprise.html">Cloudera</a></li>
+                <li><a href="http://www.searchblox.com/">SearchBlox</a></li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="6000" data-y="1000">
+        <h1>Demo First</h1><hr>
+        <p>
+            Endeca<br>
+            <ul>
+                <li>JSP Reference</li>
+                <li>Workbench</li>
+            </ul>
+        </p>
+        <p>
+            Solr<br>
+            <ul>
+                <li>/solr/</li>
+                <li>/solr/browse</li>
+            </ul>
+        </p>
+        <p>
+            Elasticsearch<br>
+            <ul>
+                <li>/?pretty</li>
+                <li>/_all/_mapping?pretty</li>
+                <li>Kibana, Marvel, Elastic HQ</li>
+            </ul>            
+        </p>
+    </div>
+
+    <div class="step slide" data-x="7000">
+        <h1>Structure</h1><hr>
+        <p>
+            <ul>
+                <li>p_SKU</li>
+                <li>p_BRAND</li>
+                <li class="tooltip" title="Fuzzy, Upper/Lower case">p_SKU_SHORT</li>
+                <li class="tooltip" title="Low rank">p_SKU_LONG</li>
+                <li class="tooltip" title="Auto, Manual">[p_KEY_WORD]</li>
+                <li>p_IMAGE_FILE_NAME</li>
+                <li>p_UOM</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="7000">
+        <h1>Structure</h1><hr>
+        <p>
+            <ul>
+                <li>p_SKU</li>
+                <li>p_BRAND</li>
+                <li class="tooltip" title="Fuzzy, Upper/Lower case">p_SKU_SHORT</li>
+                <li class="tooltip" title="Low rank">p_SKU_LONG</li>
+                <li class="tooltip" title="Auto, Manual">[p_KEY_WORD]</li>
+                <li>p_IMAGE_FILE_NAME</li>
+                <li>p_UOM</li>
+                <li class="hightLight">[p_ALTERNATE]</li>
+                <li class="hightLight">p_START_DATE</li>
+                <li class="hightLight">p_END_DATE</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="7000">
+        <h1>Structure</h1><hr>
+        <p>
+            <ul>
+                <li>p_SKU</li>
+                <li>p_BRAND</li>
+                <li class="tooltip" title="Fuzzy, Upper/Lower case">p_SKU_SHORT</li>
+                <li class="tooltip" title="Low rank">p_SKU_LONG</li>
+                <li class="tooltip" title="Auto, Manual">[p_KEY_WORD]</li>
+                <li>p_IMAGE_FILE_NAME</li>
+                <li>p_UOM</li>
+                <li>[p_ALTERNATE]</li>
+                <li>p_START_DATE</li>
+                <li>p_END_DATE</li>
+                <li class="hightLight tooltip" title="Exactly, In">[p_CATEGORY]</li>
+                <li class="hightLight tooltip">p_DEFAULT_NAVIGATION_ID</li>
+            </ul>
+        </p>
+    </div>
+
+
+    <div class="step slide" data-x="7000">
+        <h1>Structure</h1><hr>
+        <p>
+            <ul>
+                <li>p_SKU</li>
+                <li>p_BRAND</li>
+                <li class="tooltip" title="Fuzzy, Upper/Lower case">p_SKU_SHORT</li>
+                <li class="tooltip" title="Low rank">p_SKU_LONG</li>
+                <li class="tooltip" title="Auto, Manual">[p_KEY_WORD]</li>
+                <li>p_IMAGE_FILE_NAME</li>
+                <li>p_UOM</li>
+                <li>[p_ALTERNATE]</li>
+                <li>p_START_DATE</li>
+                <li>p_END_DATE</li>
+                <li class="tooltip" title="Exactly, In">[p_CATEGORY]</li>
+                <li>p_DEFAULT_NAVIGATION_ID</li>
+                <li class="hightLight tooltip" title="Facet">p_PRICE</li>
+                <li class="hightLight tooltip" title="Sort">Stock, Sales, Status</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="8000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Field options</p>
+        <p>
+            <ul>
+                <li>Index ?</li>
+                <li>Store ?</li>
+                <li>Multiple ?</li>
+                <li>TermVector ?</li>
+            </ul>           
+        </p>
+    </div>
+
+    <div class="step slide" data-x="9000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>
+            <ul>
+                <li>Tokenizer</li>
+                <li>Filter</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="10000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Tokenizer</p>
+        <p>
+            <ul>
+                <li class="tooltip" title="Sophisticated grammar-based tokenizer, emitting tokens for high-level types like e-mail addresses. Each emitted token is tagged with a special type.">Standard Tokenizer</li>
+                <li>Whitespace Tokenizer</li>
+                <li>Keyword Tokenizer</li>
+                <li>Path Hierarchy Tokenizer</li>
+                <li>Pattern Tokenizer</li>
+                <li><a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html">nGram Tokenizer</a></li>
+                <li>
+                    Language Specific Tokenizer<br>
+                    <div>
+                        Smart Chinese, CJK, <a href="https://code.google.com/p/ik-analyzer/">ik</a>, <a href="https://github.com/chenlb/mmseg4j-solr">mmseg4j</a>, <a href="https://github.com/ansjsun/ansj_seg">Ansj</a>, <a href="http://nlp.stanford.edu/software/segmenter.shtml">Stanford</a>
+                    </div>
+                </li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="11000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Filter</p>
+        <p>
+            <ul>
+                <li>Stop word Filter</li>
+                <li>Synonym Filter</li>
+                <li>LowerCase Filter</li>
+                <li>Trim Filter</li>
+                <li class="tooltip" title="'riding', 'rides', 'horses' ==&gt; 'ride', 'ride', 'hors'.">Porter Stem Filter</li>
+                <li class="tooltip" title="'Wi-Fi' ==&gt; 'Wi', 'Fi'">Word Delimiter Filter</li>
+                <li><a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html">More</a></li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="12000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Solr schema.xml</p>
+        <p>Solr analysis tool</p>
+        <p>Elasticsearch <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-analyze.html">analysis tool</a></p>
+    </div>
+
+    <div class="step slide" data-x="13000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Query Syntax</p>
+        <p>
+            <ul>
+                <li>Field: 'name:value'</li>
+                <li class="tooltip" title="OR and AND, which is better?">Logic: 'AND', 'OR', 'NOT'</li>
+                <li>Rank: '^1.5', '^0.5'</li>
+                <li>Range: '[', ']'</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="14000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Query Parameter</p>
+        <p>
+            <ul>
+                <li>Query string</li>
+                <li>Sort: asc, desc</li>
+                <li>Offset: start, rows</li>
+                <li>Filter result</li>
+                <li>Returning fields</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="15000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <p>Scoring</p>
+        <p>
+            Term Frequency (tf) <br>
+            How many times the term t occurs in the document.
+        </p>
+        <p>
+            Document Frequency (df) <br>
+            A measure of how “unique” the term is. Very common terms have a high df; very rare terms have a low df.
+        </p>
+        <p>Term weight</p>
+        <img src="img/tw.png">
+    </div>
+
+    <div class="step slide" data-x="16000" data-y="1000">
+        <h1>Indexing &amp; Search</h1><hr>
+        <h2>Examples</h2>
+        <p>
+            Solr<br>
+            Get docs name contains 'Test' and features contains '功能'
+        </p>
+        <p>
+            Elasticsearch<br>
+            Get 20 play name, text and speech# which text contains 'Tempest', and order by play name
+        </p>
+    </div>
+
+    <div class="step slide" data-x="17000">
+        <h1>Features</h1><hr>
+        <p>
+            <ul>
+                <li>Data Import</li>
+                <li>Aggregation</li>
+                <li>Navigation</li>
+                <li>Search Suggester</li>
+                <li>Stemming</li>
+                <li>Keyword 301/302</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="18000">
+        <h1>Features</h1><hr>
+        <h2>Data Import</h2>
+        <p>
+            <img width="800" height="480" src="img/sql.png">
+        </p>
+    </div>
+
+    <div class="step slide" data-x="19000">
+        <h1>Features</h1><hr>
+        <h2>Data Import</h2>
+        <p>
+            Solr: <br>JDBC, CSV, XML, Tika, URL, Flat File
+            <ul>
+                <li>user:~/solr/example/exampledocs$ java -jar post.jar *.xml</li>
+                <li>http://wiki.apache.org/solr/DataImportHandler</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="19000">
+        <h1>Features</h1><hr>
+        <h2>Data Import</h2>
+        <p>
+            Solr: <br>JDBC, CSV, XML, Tika, URL, Flat File
+            <ul>
+                <li>user:~/solr/example/exampledocs$ java -jar post.jar *.xml</li>
+                <li>http://wiki.apache.org/solr/DataImportHandler</li>
+            </ul>
+        </p>
+        <p>
+           Elasticsearch: <br>CouchDB, Dropbox, FileSystem, Git, JDBC, JMS, Kafka, LDAP, MongoDB, Redis, RSS, Solr, Subversion, Twitter, Wikipedia 
+            <ul>
+                <li>curl -XPUT localhost:9200/_bulk --data-binary @shakespeare.json</li>
+                <li>https://github.com/jprante/elasticsearch-river-jdbc</li>
+            </ul>
+        </p>
+    </div>
+
+
+    <div class="step slide" data-x="20000">
+        <h1>Features</h1><hr>
+        <h2>Aggregation (Faceting)</h2>
+        <p>
+            Endeca<br>
+            Get black pens
+        </p>
+        <p>
+            Solr
+            <ul>
+                <li>Facet by category and price between 350 - 400</li>
+                <li>solrconfig.xml</li>
+            </ul>
+        </p>
+        <p>
+            Elasticsearch<br>
+            http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html
+        </p>
+    </div>
+
+    <div class="step slide" data-x="21000">
+        <h1>Features</h1><hr>
+        <h2>Navigation</h2>
+        <p>Database Mapping</p>
+        <p><a href="https://wiki.apache.org/solr/HierarchicalFaceting">Hierarchical Faceting</a></p>
+    </div>
+
+    <div class="step slide" data-x="22000">
+        <h1>Features</h1><hr>
+        <h2>Search Suggester (Predictive Search, Auto complete)</h2>
+    </div>
+
+    <div class="step slide" data-x="22000">
+        <h1>Features</h1><hr>
+        <h2>Search Suggester (Predictive Search, Auto complete)</h2>
+        <p>Trigger by input timeout</p>
+    </div>
+
+    <div class="step slide" data-x="22000">
+        <h1>Features</h1><hr>
+        <h2>Search Suggester (Predictive Search, Auto complete)</h2>
+        <p>Trigger by input timeout</p>
+        <p>Chains of validations: length, blacklist, script injection</p>
+    </div>
+
+    <div class="step slide" data-x="22000">
+        <h1>Features</h1><hr>
+        <h2>Search Suggester (Predictive Search, Auto complete)</h2>
+        <p>Trigger by input timeout</p>
+        <p>Chains of validations: length, blacklist, script injection</p>
+        <p>
+            Dict from: <code class="tooltip" title="Picked up 2-3 fields; Whole word (original data) and minimum term (split string with space); Stemming">record refining</code>, <code class="tooltip" title="User behavior system">search history</code>, manual. (P l-h)
+        </p>
+    </div>
+
+    <div class="step slide" data-x="22000">
+        <h1>Features</h1><hr>
+        <h2>Search Suggester (Predictive Search, Auto complete)</h2>
+        <p>Trigger by input timeout</p>
+        <p>Chains of validations: length, blacklist, script injection</p>
+        <p>
+            Dict from: <code class="tooltip" title="Picked up 2-3 fields; Whole word (original data) and minimum term (split string with space); Stemming">record refining</code>, <code class="tooltip" title="User behavior system">search history</code>, manual. (P l-h)
+        </p>
+        <p>
+            Matches: <br>
+            Whole + forward max (prefix) + partly (suffix, infix). (P h-l)<br>
+            More frequently is better, less length is better. <br>
+            Limit result count, at least one per each. 
+        </p>
+    </div>
+
+    <div class="step slide" data-x="23000">
+        <h1>Features</h1><hr>
+        <h2>Search Suggester (Predictive Search, Auto complete)</h2>
+        <p>            
+            Solr<br>
+            <ul>
+                <li>Use terms.prefix 't'</li>
+                <li>http://wiki.apache.org/solr/Suggester</li>
+            </ul>
+        </p>
+        <p>
+            Endeca
+        </p>
+    </div>
+
+    <div class="step slide" data-x="24000">
+        <h1>Features</h1><hr>
+        <h2>Stemming</h2>
+        <ul>
+            <li>stopwords</li>
+            <li>synonyms</li>
+            <li>spellings</li>
+            <li>lemmatization</li>
+            <li>domain noun</li>
+            <li>pinyin</li>
+        </ul>
+    </div>
+
+    <div class="step slide" data-x="25000">
+        <h1>Features</h1><hr>
+        <h2>Keyword 301/302</h2>
+    </div>
+
+    <div class="step slide" data-x="25000" data-y="-1000">
+        <h1>Evaluating</h1><hr>
+        <h2>Fast, Exact, Full, New</h2>
+        <p>Steps</p>
+        <p>
+            <ol>
+                <li class="tooltip" title="Samples; query log">Prepare Data</li>
+                <li class="tooltip" title="Frequency high and low, single/multi term">Pick-up User Cases</li>
+                <li>Testing</li>
+                <li>Statistics</li>
+                <li>Training</li>
+            </ol>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="26000" data-y="-1000">
+        <h1>Evaluating</h1><hr>
+        <p>Methods</p>
+        <p>
+            <ul>
+                <li>Recall-Precision</li>
+                <li>Discounted Cumulative Gain</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide" data-x="27000" data-y="-1000">
+        <h1>Evaluating</h1><hr>
+        <p>Recall-Precision</p>
+        <p>
+            A: Relevant Document Collection<br>
+            B: Search Result
+        </p>
+        <p>
+            <img width="250" src="img/rp1.png"><br>
+            <img width="250" src="img/rp2.png"><br>
+            <img width="250" src="img/rp3.png">
+        </p>
+    </div>
+
+    <div class="step slide" data-x="28000" data-y="-1000">
+        <h1>Evaluating</h1><hr>
+        <p>Discounted Cumulative Gain (DCG)</p>
+        <p>
+            rel: Very Good:2 / Good:1 / Fair:0 / Bad:-1 / Very Bad: -2<br>
+            reli: Score of #i<br>
+            p: Number of Docs at result page<br>
+            IDCG: Ideal DCG
+        </p>
+        <p class="imgVertical">
+            <img class="tooltip" title="Whole search result score" width="230" src="img/DCG1.png">
+            <img width="300" src="img/DCG2.png">
+            <img class="tooltip" title="Normalize DCG" width="230" src="img/DCG3.png">
+        </p>
+    </div>
+
+    <div class="step slide" data-x="32000">
+        <h1>Reference</h1><hr>
+        <p>
+            <ul>
+                <li><a href="http://www.manning.com/hatcher3/">Lucene in Action</a></li>
+                <li>https://lucene.apache.org/solr/4_9_0/tutorial.html</li>
+                <li>https://wiki.apache.org/solr/</li>
+                <li>http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/index.html</li>
+                <li>http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/index.html</li>
+                <li>http://solr-vs-elasticsearch.com/</li>
+                <li>http://www.cnblogs.com/guochunguang/articles/3641008.html</li>
+                <li>http://www.infoq.com/cn/articles/cyw-evaluate-seachengine-result-quality</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="step slide"  data-x="33000">
+        <h1>It is just the start</h1><hr>
+        <img width="775" height="500" src="img/next.jpeg" alt="Spider, Distribute, Shard, NLP, HMM, PageRank, HITS, Bloom~Filter, Trie, SEO, Lexicon, Dynamic~Fields, Server~Side~Algorithm, Performance, FST, Bayesian"/>
+    </div>
+
+    <div class="step slide"  data-x="34000">
+        <h1>Q&amp;A</h1><hr>
+        <q class="center">Thank You!</q>
+    </div>
+
+    <div id="overview" class="step" data-x="18000" data-y="1500" data-scale="20">
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+<script src="js/slide.js"></script>
+
+</body>
+</html>
