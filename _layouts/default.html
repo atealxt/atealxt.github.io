@@ -23,14 +23,16 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="/"><h1>Luis Ashurei</h1></a>
-        <p>IT Tech, Love Life</p>
-        <p class="view">
-          <a href="https://github.com/atealxt">GitHub</a> |
-          <a href="https://twitter.com/atealxt">Twitter</a> |
-          <a href="http://atealxt.appspot.com/">GAE</a> |
-          atealxt at Gmail
-        </p>
+        <div id="profile" itemscope itemtype="http://schema.org/Person">
+          <a href="/"><h1 itemprop="name">Luis Ashurei</h1></a>
+          <p itemprop="description">IT Tech, Love Life</p>
+          <p class="view">
+            <a href="https://github.com/atealxt" itemprop="url">GitHub</a> |
+            <a href="https://twitter.com/atealxt" itemprop="url">Twitter</a> |
+            <a href="http://atealxt.appspot.com/" itemprop="url">GAE</a> |
+            <span itemprop="email">atealxt at Gmail</span>
+          </p>
+        </div>
         <p id="navTree"></p>
       </header>
       <section>
