@@ -11,7 +11,7 @@ index: true
 {% for post in site.posts %}
 　{% if post.index %}
   　<p itemscope itemtype="http://schema.org/BlogPosting">
-      <time datetime="{{post.date}}" itemprop="datePublished">{{ post.date | date_to_string }}</time> <a href="{{ post.url }}" itemprop="url"><span itemprop="name">{{ post.title }}</span></a>
+      <time datetime="{{ post.date | date: "%Y-%m-%-d" }}" itemprop="datePublished">{{ post.date | date_to_string }}</time> <a href="{{ post.url }}" itemprop="url"><span itemprop="name">{{ post.title }}</span></a>
   　</p>
 　{% endif %}
 {% endfor %}
