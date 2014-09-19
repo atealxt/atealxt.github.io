@@ -119,15 +119,15 @@
         <p>
             Solr<br>
             <ul>
-                <li>/solr/</li>
-                <li>/solr/browse</li>
+                <li>http://localhost:8983/solr/</li>
+                <li>http://localhost:8983/solr/browse</li>
             </ul>
         </p>
         <p>
             Elasticsearch<br>
             <ul>
-                <li>/?pretty</li>
-                <li>/_all/_mapping?pretty</li>
+                <li>http://localhost:9200/?pretty</li>
+                <li>http://localhost:9200/_all/_mapping?pretty</li>
                 <li>Kibana, Marvel, Elastic HQ</li>
             </ul>            
         </p>
@@ -323,11 +323,13 @@
         <h2>Examples</h2>
         <p>
             Solr<br>
-            Get docs name contains 'Test' and features contains '功能'
+            Get docs name contains 'Test' and features contains '功能'<br>
+            http://localhost:8983/solr/collection1/select?q=name%3ATest+AND+features%3A%E5%8A%9F%E8%83%BD&wt=json&indent=true&_=1409554577241
         </p>
         <p>
             Elasticsearch<br>
-            Get 20 play name, text and speech# which text contains 'Tempest', and order by play name
+            Get 20 play name, text and speech# which text contains 'Tempest', and order by play name<br>
+            http://localhost:9200/shakespeare/line/_search?q=text_entry:%22Tempest%22%20AND%20speech_number:[1%20TO%20100]&fields=play_name,text_entry,speech_number&sort=play_name:asc&size=20
         </p>
     </div>
 
@@ -462,7 +464,10 @@
         <p>            
             Solr<br>
             <ul>
-                <li>Use terms.prefix 't'</li>
+                <li>
+                    Use terms.prefix 't'<br>
+                    http://localhost:8983/solr/collection1/terms?q=t&limit=10&timestamp=1409491138437&terms.prefix=t&terms.sort=count&terms.fl=name&wt=velocity&v.template=suggest
+                </li>
                 <li>http://wiki.apache.org/solr/Suggester</li>
             </ul>
         </p>
