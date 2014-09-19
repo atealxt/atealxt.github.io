@@ -321,15 +321,13 @@
     <div class="step slide" data-x="16000" data-y="1000">
         <h1>Indexing &amp; Search</h1><hr>
         <h2>Examples</h2>
-        <p>
+        <p data-url="http://localhost:8983/solr/collection1/select?q=name%3ATest+AND+features%3A%E5%8A%9F%E8%83%BD&wt=json&indent=true&_=1409554577241">
             Solr<br>
-            Get docs name contains 'Test' and features contains '功能'<br>
-            /solr/collection1/select?q=name:Test+AND+features:功能
+            Get docs name contains 'Test' and features contains '功能'
         </p>
-        <p>
+        <p data-url="http://localhost:9200/shakespeare/line/_search?q=text_entry:%22Tempest%22%20AND%20speech_number:[1%20TO%20100]&fields=play_name,text_entry,speech_number&sort=play_name:asc&size=20">
             Elasticsearch<br>
-            Get 20 play name, text and speech# which text contains 'Tempest', and order by play name<br>
-            /shakespeare/line/_search?q=text_entry:"Tempest" AND speech_number:[1 TO 100]&fields=play_name,text_entry,speech_number&sort=play_name:asc&size=20
+            Get 20 play name, text and speech# which text contains 'Tempest', and order by play name
         </p>
     </div>
 
