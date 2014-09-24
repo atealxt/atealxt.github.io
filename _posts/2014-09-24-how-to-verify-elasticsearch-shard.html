@@ -31,21 +31,24 @@ Download the latest stable version from <a href="http://www.elasticsearch.org/do
 
 <p>
 Modify `config/elasticsearch.yml` (create if not exist): <br>
-<pre><code>
-cluster.name: "my_elasticsearch" # change the default name to avoid possible conflict
-node.name: "node1" # use use "node2" in second one
+<pre><code>cluster.name: "my_elasticsearch" # change the default name to avoid possible conflict
+node.name: "node1" # use "node2" in second one
 index.number_of_replicas: 0 # disable replication
 </code></pre>
 </p>
 
 <p>
-startup
+Start up
+<pre><code>/elasticsearch-home-folder/node1/bin/elasticsearch
+/elasticsearch-home-folder/node2/bin/elasticsearch
+</code></pre>
 </p>
 
 <p>
-check status
-	http://localhost:9200/_cluster/health?pretty=true
-	http://localhost:9200/_cluster/state
+Check cluster status:
+<pre><code>http://localhost:9200/_cluster/health?pretty=true
+http://localhost:9200/_cluster/state
+</code></pre>
 </p>
 
 <h3>
@@ -53,8 +56,7 @@ check status
 index
 </h3>
 
-<pre><code>
-$ curl -XPUT 'http://localhost:9200/_bulk' -d '
+<pre><code>$ curl -XPUT 'http://localhost:9200/_bulk' -d '
 	{"index":{"_index":"shakespeare","_type":"act","_id":0}}
 	{"line_id":1,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"ACT I"}
 	{"index":{"_index":"shakespeare","_type":"scene","_id":1}}
