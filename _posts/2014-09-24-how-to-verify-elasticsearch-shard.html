@@ -26,7 +26,7 @@ Prepare
 </h3>
 
 <p>
-Download the latest stable version from <a href="http://www.elasticsearch.org/download/">Here</a>, unzip it and clone one to simulate a second node.
+Download the latest stable version, unzip it and clone one to simulate a second node.
 </p>
 
 <p>
@@ -43,7 +43,7 @@ index.number_of_replicas: 0
 </p>
 
 <p>
-Start up server
+Start-up servers
 <pre><code>/elasticsearch-home-folder/node1/bin/elasticsearch
 /elasticsearch-home-folder/node2/bin/elasticsearch
 </code></pre>
@@ -54,7 +54,7 @@ Check cluster status
 <pre><code>http://localhost:9200/_cluster/health?pretty=true
 http://localhost:9200/_cluster/state
 </code></pre>
-As you see there are two nodes. Next to input data to see sharding. 
+As you can see there are two nodes. Next to input data to see sharding. 
 </p>
 
 <h3>
@@ -62,7 +62,8 @@ As you see there are two nodes. Next to input data to see sharding.
 Index
 </h3>
 
-Save ten records.
+<p>
+Save ten records
 <pre><code>$ curl -XPUT 'http://localhost:9200/_bulk' -d '
   {"index":{"_index":"shakespeare","_type":"act","_id":0}}
   {"line_id":1,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"ACT I"}
@@ -87,6 +88,7 @@ Save ten records.
 '
 </code></pre>
 (If you are in Windows you can use Firefox + RESTClient to input data just like I did.)
+</p>
 
 <p>
 See result via `http://localhost:9200/_search?q=*`, note total number of records is 10. 
