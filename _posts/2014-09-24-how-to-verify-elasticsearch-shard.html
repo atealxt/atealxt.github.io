@@ -11,7 +11,7 @@ comments: disqus
 {{ page.title }}
 </h3>
 <p>
-Elasticsearch distribution is looks as simple as a "magician", what you need to do is just start the service then enjoy. <br>
+Elasticsearch distribution is looks as simple as a "magician", what you need to do is just start the server then enjoy. <br>
 However anyway you need to understand how it works first, then decide to pick it up or not with read each of setting property and a heavy testing.
 </p>
 
@@ -30,70 +30,77 @@ Download the latest stable version from <a href="http://www.elasticsearch.org/do
 </p>
 
 <p>
-Modify `config/elasticsearch.yml` (create if not exist): <br>
-<pre><code>cluster.name: "my_elasticsearch" # change the default name to avoid possible conflict
+Modify `config/elasticsearch.yml` (create if not exist) <br>
+<pre><code># change the default name to avoid possible conflict
+cluster.name: "my_elasticsearch"
+
+node name
 node.name: "node1" # use "node2" in second one
-index.number_of_replicas: 0 # disable replication
+
+# disable replication
+index.number_of_replicas: 0
 </code></pre>
 </p>
 
 <p>
-Start up
+Start up server
 <pre><code>/elasticsearch-home-folder/node1/bin/elasticsearch
 /elasticsearch-home-folder/node2/bin/elasticsearch
 </code></pre>
 </p>
 
 <p>
-Check cluster status:
+Check cluster status
 <pre><code>http://localhost:9200/_cluster/health?pretty=true
 http://localhost:9200/_cluster/state
 </code></pre>
+As you see there are two nodes. Next to input data to see sharding. 
 </p>
 
 <h3>
 <a href="#index" name="index" class="anchor"><span class="octicon octicon-link"></span></a>
-index
+Index
 </h3>
 
+Save ten records.
 <pre><code>$ curl -XPUT 'http://localhost:9200/_bulk' -d '
-	{"index":{"_index":"shakespeare","_type":"act","_id":0}}
-	{"line_id":1,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"ACT I"}
-	{"index":{"_index":"shakespeare","_type":"scene","_id":1}}
-	{"line_id":2,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"SCENE I. London. The palace."}
-	{"index":{"_index":"shakespeare","_type":"line","_id":2}}
-	{"line_id":3,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"Enter KING HENRY, LORD JOHN OF LANCASTER, the EARL of WESTMORELAND, SIR WALTER BLUNT, and others"}
-	{"index":{"_index":"shakespeare","_type":"line","_id":3}}
-	{"line_id":4,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.1","speaker":"KING HENRY IV","text_entry":"So shaken as we are, so wan with care,"}
-	{"index":{"_index":"shakespeare","_type":"line","_id":4}}
-	{"line_id":5,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.2","speaker":"KING HENRY IV","text_entry":"Find we a time for frighted peace to pant,"}
-	{"index":{"_index":"shakespeare","_type":"line","_id":5}}
-	{"line_id":6,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.3","speaker":"KING HENRY IV","text_entry":"And breathe short-winded accents of new broils"}
-	{"index":{"_index":"shakespeare","_type":"line","_id":6}}
-	{"line_id":7,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.4","speaker":"KING HENRY IV","text_entry":"To be commenced in strands afar remote."}
-	{"index":{"_index":"shakespeare","_type":"line","_id":7}}
-	{"line_id":8,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.5","speaker":"KING HENRY IV","text_entry":"No more the thirsty entrance of this soil"}
-	{"index":{"_index":"shakespeare","_type":"line","_id":8}}
-	{"line_id":9,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.6","speaker":"KING HENRY IV","text_entry":"Shall daub her lips with her own childrens blood;"}
-	{"index":{"_index":"shakespeare","_type":"line","_id":9}}
-	{"line_id":10,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.7","speaker":"KING HENRY IV","text_entry":"Nor more shall trenching war channel her fields,"}
+  {"index":{"_index":"shakespeare","_type":"act","_id":0}}
+  {"line_id":1,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"ACT I"}
+  {"index":{"_index":"shakespeare","_type":"scene","_id":1}}
+  {"line_id":2,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"SCENE I. London. The palace."}
+  {"index":{"_index":"shakespeare","_type":"line","_id":2}}
+  {"line_id":3,"play_name":"Henry IV","speech_number":"","line_number":"","speaker":"","text_entry":"Enter KING HENRY, LORD JOHN OF LANCASTER, the EARL of WESTMORELAND, SIR WALTER BLUNT, and others"}
+  {"index":{"_index":"shakespeare","_type":"line","_id":3}}
+  {"line_id":4,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.1","speaker":"KING HENRY IV","text_entry":"So shaken as we are, so wan with care,"}
+  {"index":{"_index":"shakespeare","_type":"line","_id":4}}
+  {"line_id":5,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.2","speaker":"KING HENRY IV","text_entry":"Find we a time for frighted peace to pant,"}
+  {"index":{"_index":"shakespeare","_type":"line","_id":5}}
+  {"line_id":6,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.3","speaker":"KING HENRY IV","text_entry":"And breathe short-winded accents of new broils"}
+  {"index":{"_index":"shakespeare","_type":"line","_id":6}}
+  {"line_id":7,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.4","speaker":"KING HENRY IV","text_entry":"To be commenced in strands afar remote."}
+  {"index":{"_index":"shakespeare","_type":"line","_id":7}}
+  {"line_id":8,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.5","speaker":"KING HENRY IV","text_entry":"No more the thirsty entrance of this soil"}
+  {"index":{"_index":"shakespeare","_type":"line","_id":8}}
+  {"line_id":9,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.6","speaker":"KING HENRY IV","text_entry":"Shall daub her lips with her own childrens blood;"}
+  {"index":{"_index":"shakespeare","_type":"line","_id":9}}
+  {"line_id":10,"play_name":"Henry IV","speech_number":1,"line_number":"1.1.7","speaker":"KING HENRY IV","text_entry":"Nor more shall trenching war channel her fields,"}
 '
 </code></pre>
+(If you are in Windows you can use Firefox + RESTClient to input data just like I did.)
 
 <p>
-query
-	http://localhost:9200/_search?q=*
+See result via `http://localhost:9200/_search?q=*`, note total number of records is 10. 
 </p>
 
 <h3>
 <a href="#verify" name="verify" class="anchor"><span class="octicon octicon-link"></span></a>
-verify
+Verify
 </h3>
 
 <p>
 check folder
-	\elasticsearch-1.2.1\data\my_elasticsearch\nodes\0\indices\shakespeare\ (0 2 4)
-	\elasticsearch-1.2.1\data\my_elasticsearch\nodes\0\indices\shakespeare\ (1 3)
+	/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\ (0 2 4)
+	/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\ (1 3)
 </p>
 
 <p>
