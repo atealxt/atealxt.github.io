@@ -34,7 +34,7 @@ Modify `config/elasticsearch.yml` (create if not exist) <br>
 <pre><code># change the default name to avoid possible conflict
 cluster.name: "my_elasticsearch"
 
-node name
+# node name
 node.name: "node1" # use "node2" in second one
 
 # disable replication
@@ -54,7 +54,7 @@ Check cluster status
 <pre><code>http://localhost:9200/_cluster/health?pretty=true
 http://localhost:9200/_cluster/state
 </code></pre>
-As you can see there are two nodes. Next to input data to see sharding. 
+As you can see there are two nodes. Next is input data to see sharding. 
 </p>
 
 <h3>
@@ -100,18 +100,24 @@ Verify
 </h3>
 
 <p>
-check folder
-	/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\ (0 2 4)
-	/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\ (1 3)
+First let's check sharding status by look index folder
+<pre><code>/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\
+/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\
+</code></pre>
+A node have 2 shards (folders) and the other have 3.
 </p>
 
 <p>
-shutdown the second node
+Then shutdown the second node
+</code></pre>$ curl -XPOST 'http://localhost:9200/_cluster/nodes/node2/_shutdown'
+<pre><code>
 </p>
 
 <p>
-query
-	http://localhost:9200/_search?q=*
+Query to see
+</code></pre>http://localhost:9200/_search?q=*
+<pre><code>
+Oh yes only data on live sharding are returned.
 </p>
 
 <p>
