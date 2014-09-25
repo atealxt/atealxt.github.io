@@ -124,7 +124,7 @@ Oh yes only data on live sharding are returned.
 Check cluster health by the way
 <pre><code>http://localhost:9200/_cluster/health?pretty=true
 </code></pre>
-The status is "red" means some shard is not available (If you turn down node2 with replication enabled, status will be "yellow").
+The status is "red" means some shard is not available (If cluster replication is enabled and node2 is down, status will be "yellow").
 </p>
 
 <h3>
@@ -133,8 +133,7 @@ in conclusion
 </h3>
 
 <p>
-this article is about...
-please enable replication if want reliability
+Now you know it is working as said. Don't diable replication unless you don't need reliability.
 </p>
 
 <h3>
