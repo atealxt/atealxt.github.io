@@ -121,9 +121,10 @@ Oh yes only data on live sharding are returned.
 </p>
 
 <p>
-check status
-	http://localhost:9200/_cluster/health?pretty=true (red)
-	[what is yellow]
+Check cluster health by the way
+<pre><code>http://localhost:9200/_cluster/health?pretty=true
+</code></pre>
+The status is "red" means some shard is not available (If you turn down node2 with replication enabled, status will be "yellow").
 </p>
 
 <h3>
@@ -142,6 +143,6 @@ Reference
 </h3>
 
 <p>
-http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-discovery.html
+http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-discovery.html<br>
 http://stackoverflow.com/questions/15694724/shards-and-replicas-in-elasticsearch
 </p>
