@@ -100,17 +100,17 @@ Verify
 </h3>
 
 <p>
-First let's check sharding status by look index folder
-<pre><code>/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\
-/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare\
+Firstly let's check sharding status by look index folder
+<pre><code>/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare/
+/elasticsearch-home-folder/node1/data/my_elasticsearch/nodes/0/indices/shakespeare/
 </code></pre>
 A node have 2 shards (folders) and the other have 3.
 </p>
 
 <p>
 Then shutdown the second node
-</code></pre>$ curl -XPOST 'http://localhost:9200/_cluster/nodes/node2/_shutdown'
-<pre><code>
+<pre><code>$ curl -XPOST 'http://localhost:9200/_cluster/nodes/node2/_shutdown'
+</code></pre>
 </p>
 
 <p>
