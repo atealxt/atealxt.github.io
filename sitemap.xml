@@ -9,6 +9,7 @@
 <url>
   <loc>http://atealxt.github.io/</loc>
   <changefreq>daily</changefreq>
+  <priority>0.8</priority>
 </url>
 <url>
   <loc>http://atealxt.github.io/2014/09/25/how-to-verify-elasticsearch-shard.html</loc>
