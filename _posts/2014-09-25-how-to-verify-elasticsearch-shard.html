@@ -108,6 +108,12 @@ A node have 2 shards (folders) and the other have 3.
 </p>
 
 <p>
+Query Parameter `routing` can be use for search only specific shard
+<pre><code>http://localhost:9200/_search?q=*&routing=1,3
+</code></pre>
+</p>
+
+<p>
 Then shutdown the second node
 <pre><code>$ curl -XPOST 'http://localhost:9200/_cluster/nodes/node2/_shutdown'
 </code></pre>
