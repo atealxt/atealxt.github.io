@@ -41,7 +41,7 @@ if (lastMatchEnd &lt; from.length())
 replacedTo = matcher.replaceAll(replacedTo);
 </code></pre>
 
-For User just need to edit the rule in the xml with format
+For user just need to edit the rule in the xml with format
 <pre><code>&lt;rule&gt;
    &lt;from&gt;^/some/olddir/(.*)$&lt;/from&gt;
    &lt;to&gt;/very/newdir/$1&lt;/to&gt;
@@ -82,7 +82,7 @@ String generalURL = "/product/123456/apple/?test";
 Matcher m1 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(generalURL);
 System.out.println(m1.replaceAll(targetURL));
 </code></pre>
-Output: query?id=123456&name=apple <br>
+Output: <code>query?id=123456&name=apple</code> <br>
 See? We ok? NO!
 </p>
 
@@ -97,7 +97,7 @@ Now append some character in the end of url
 Matcher m2 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m2.replaceAll(targetURL)); 
 </code></pre>
-Output: query?id=123456/apple&name=test <br>
+Output: <code>query?id=123456/apple&name=test</code> <br>
 See that? Parameter id is incorrect. How to fix it?
 </p>
 
@@ -112,7 +112,7 @@ Regular expression is matching greedy by default, disable here by character `?`
 Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m3.replaceAll(targetURL)); 
 </code></pre>
-Output: query?id=123456&name=apple <br>
+Output: <code>query?id=123456&name=apple</code> <br>
 Looks good right? Are we ok now? NO!
 </p>
 
@@ -128,8 +128,8 @@ Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL)
 System.out.println(m4.replaceAll(targetURL)); 
 </code></pre>
 Output: <br>
-query?id=123456&name=apple <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt; <br>
+<code>query?id=123456&name=apple <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt;</code> <br>
 </p>
 
 <p>
@@ -152,7 +152,7 @@ Generally enable <a href="http://docs.oracle.com/javase/7/docs/api/java/util/reg
 <pre><code>Matcher m5 = Pattern.compile(pattern2, Pattern.DOTALL).matcher(xssURL);
 System.out.println(m5.replaceAll(targetURL)); 
 </code></pre>
-Output: query?id=123456&name=apple <br>
+Output: <code>query?id=123456&name=apple</code> <br>
 However UrlRewriteFilter hard coded the flag to `CASE_INSENSITIVE` as source code shows above.
 </p>
 
