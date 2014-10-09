@@ -27,7 +27,7 @@ UrlRewriteFilter uses java standard `java.util.regex` package to match regular e
 </code></pre>
 <a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/substitution/PatternReplacer.java">Matching and replace</a>
 <pre><code>// put the remaining ending non-matched string
-if (lastMatchEnd < from.length())
+if (lastMatchEnd &lt; from.length())
     sb.append(from.substring(lastMatchEnd));
 </code></pre>
 (Similar to the source code prevoius version 3.2 `org.tuckey.web.filters.urlrewrite.RuleBase` )
