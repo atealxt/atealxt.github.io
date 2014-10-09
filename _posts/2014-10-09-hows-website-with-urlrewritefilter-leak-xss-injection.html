@@ -15,6 +15,11 @@ We have a J2EE website has been served for many of years, which use <a href="htt
 Last week we found a XSS injection, here is what lession learned.
 </p>
 
+<h3>
+<a href="#filter" name="filter" class="anchor"><span class="octicon octicon-link"></span></a>
+UrlRewriteFilter
+</h3>
+
 <p>
 Firstly let's involve UrlRewriteFilter.<br>
 UrlRewriteFilter uses java standard `java.util.regex` package to match regular expression and do redirect.<br>
