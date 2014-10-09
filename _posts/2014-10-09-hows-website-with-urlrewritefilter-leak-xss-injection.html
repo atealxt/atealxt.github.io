@@ -82,7 +82,8 @@ String generalURL = "/product/123456/apple/?test";
 Matcher m1 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(generalURL);
 System.out.println(m1.replaceAll(targetURL));
 </code></pre>
-Output: <code>query?id=123456&name=apple</code> <br>
+Output: 
+query?id=123456&name=apple <br>
 See? We ok? NO!
 </p>
 
@@ -97,7 +98,8 @@ Now append some character in the end of url
 Matcher m2 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m2.replaceAll(targetURL)); 
 </code></pre>
-Output: <code>query?id=123456/apple&name=test</code> <br>
+Output: 
+query?id=123456/apple&name=test <br>
 See that? Parameter id is incorrect. How to fix it?
 </p>
 
@@ -112,7 +114,8 @@ Regular expression is matching greedy by default, disable here by character `?`
 Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m3.replaceAll(targetURL)); 
 </code></pre>
-Output: <code>query?id=123456&name=apple</code> <br>
+Output: 
+query?id=123456&name=apple <br>
 Looks good right? Are we ok now? NO!
 </p>
 
@@ -128,8 +131,8 @@ Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL)
 System.out.println(m4.replaceAll(targetURL)); 
 </code></pre>
 Output: <br>
-<code>query?id=123456&name=apple <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt;</code> <br>
+query?id=123456&name=apple <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt; <br>
 </p>
 
 <p>
@@ -152,7 +155,7 @@ Generally enable <a href="http://docs.oracle.com/javase/7/docs/api/java/util/reg
 <pre><code>Matcher m5 = Pattern.compile(pattern2, Pattern.DOTALL).matcher(xssURL);
 System.out.println(m5.replaceAll(targetURL)); 
 </code></pre>
-Output: <code>query?id=123456&name=apple</code> <br>
+Output: query?id=123456&name=apple <br>
 However UrlRewriteFilter hard coded the flag to `CASE_INSENSITIVE` as source code shows above.
 </p>
 
