@@ -108,8 +108,7 @@ Example C
 
 <p>
 Regular expression is matching greedy by default, disable here by character `?`
-<pre><code>
-String pattern2 = "^/product/(.*?)/(.*?)/.*";
+<pre><code>String pattern2 = "^/product/(.*?)/(.*?)/.*";
 Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m3.replaceAll(targetURL)); 
 </code></pre>
@@ -127,21 +126,19 @@ Let's inject some script get agent's cookie
 <pre><code>String xssURL = "/product/123456/apple/\n\t&lt;script&gt;alert(document.cookie)&lt;/script&gt;";
 Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL);
 System.out.println(m4.replaceAll(targetURL)); 
-// Output: query?id=123456&name=apple
-//                     &lt;script&gt;alert(document.cookie)&lt;/script&gt;
 </code></pre>
-Output: query?id=123456&name=apple <br>
+Output: <br>
+query?id=123456&name=apple <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt; <br>
 </p>
 
 <p>
 The script has been saved raw. If you directly print the value on the page, your website will be under attack:
-<pre><code>
-// access url
+<pre><code>// access url
 /product/123456/apple/%0A%09%0A%09%0A%09%0A%09/%3Cscript%3Ealert(document.cookie)%3C/script%3E
 
 // output parameter to the page like
-// &lt;link rel="alternate" media="only screen and (max-width: 640px)" href="${linkInfo}" /&gt;
+// &lt;link rel="alternate" href="${some parameter}" /&gt;
 </code></pre>
 </p>
 
