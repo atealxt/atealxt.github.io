@@ -11,8 +11,27 @@ comments: disqus
 {{ page.title }}
 </h3>
 <p>
-We have a J2EE website has been served for many of years, which use UrlRewriteFilter as rewrite module to make url seo friendly.<br>
+We have a J2EE website has been served for many of years, which use <a href="https://code.google.com/p/urlrewritefilter/">Tuckey UrlRewriteFilter</a> as rewrite module to make url seo friendly.<br>
 Last week we found a XSS injection, here is what lession learned.
+</p>
+
+<p>
+Firstly let's involve UrlRewriteFilter.
+UrlRewriteFilter uses java standard `java.util.regex` package to match regular expression and do redirect.
+<a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/utils/RegexPattern.java">Create Pattern object</a>
+<pre><cod>if (caseSensitive) {
+    pattern = Pattern.compile(patternStr);
+} else {
+    pattern = Pattern.compile(patternStr, Pattern.CASE_INSENSITIVE);
+}
+</code></pre>
+<a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/RuleBase.java">Matching and replace</a>
+User just need to edit the rule in the xml with format
+<pre><code>&lt;rule&gt;
+   &lt;from&gt;^/some/olddir/(.*)$&lt;/from&gt;
+   &lt;to&gt;/very/newdir/$1&lt;/to&gt;
+&lt;/rule&gt;
+</code></pre>
 </p>
 
 <h3>
@@ -21,6 +40,7 @@ URL Format
 </h3>
 
 <p>
+So website has a seo redirect rule like: <br><br>
 Request URL format
 <pre><code>/product/${sku no}/${sku name}/${something-else}
 # Example: /product/123456/apple/?test
@@ -38,15 +58,16 @@ Example A
 </h3>
 
 <p>
-To meet the requirement, we start with a simplest regular expression
+To meet the requirement, let's start with a simplest regular expression
 <pre><code>String targetURL = "query?id=$1&name=$2";
 
 String pattern1 = "^/product/(.*)/(.*)/.*";
 String generalURL = "/product/123456/apple/?test";
 Matcher m1 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(generalURL);
-System.out.println(m1.replaceAll(targetURL)); 
-// Output: query?id=123456&name=apple
+System.out.println(m1.replaceAll(targetURL));
 </code></pre>
+Output: query?id=123456&name=apple <br>
+See? We ok? NO!
 </p>
 
 <h3>
@@ -55,12 +76,13 @@ Example B
 </h3>
 
 <p>
-
+Now append some character in the end of url
 <pre><code>String exceptionURL = "/product/123456/apple/test/";
 Matcher m2 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m2.replaceAll(targetURL)); 
-// Output: query?id=123456/apple&name=test
 </code></pre>
+Output: query?id=123456/apple&name=test <br>
+See that? Parameter id is incorrect. How to fix it?
 </p>
 
 <h3>
@@ -69,14 +91,14 @@ Example C
 </h3>
 
 <p>
-
+Regular expression is matching greedy by default, disable here by character `?`
 <pre><code>
-// non greedy
 String pattern2 = "^/product/(.*?)/(.*?)/.*";
 Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m3.replaceAll(targetURL)); 
-// Output: query?id=123456&name=apple
 </code></pre>
+Output: query?id=123456&name=apple <br>
+Looks good right? Are we ok now? NO!
 </p>
 
 <h3>
@@ -85,13 +107,19 @@ Example D
 </h3>
 
 <p>
-
+Let's inject some script get agent's cookie
 <pre><code>String xssURL = "/product/123456/apple/\n\t&lt;script&gt;alert(document.cookie)&lt;/script&gt;";
 Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL);
 System.out.println(m4.replaceAll(targetURL)); 
 // Output: query?id=123456&name=apple
 //                     &lt;script&gt;alert(document.cookie)&lt;/script&gt;
 </code></pre>
+Output: query?id=123456&name=apple <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt; <br>
+</p>
+
+<p>
+The script has been saved raw. If you directly print the value on the page, your website will be under attack!
 </p>
 
 <h3>
@@ -127,5 +155,5 @@ System.out.println(m6.replaceAll(targetURL));
 In Conclusion
 </h3>
 <p>
-
+Do not use regular expression
 </p>
