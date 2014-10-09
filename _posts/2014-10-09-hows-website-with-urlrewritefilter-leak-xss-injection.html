@@ -21,17 +21,19 @@ UrlRewriteFilter
 </h3>
 
 <p>
-
 Firstly let's involve UrlRewriteFilter.<br>
 UrlRewriteFilter uses java standard `java.util.regex` package to match regular expression and do redirect.<br>
 <a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/utils/RegexPattern.java">Create Pattern object</a>
+</p>
 <pre><code>if (caseSensitive) {
     pattern = Pattern.compile(patternStr);
 } else {
     pattern = Pattern.compile(patternStr, Pattern.CASE_INSENSITIVE);
 }
 </code></pre>
+<p>
 <a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/substitution/PatternReplacer.java">Matching and replace</a>
+</p>
 <pre><code>// put the remaining ending non-matched string
 if (lastMatchEnd &lt; from.length())
     sb.append(from.substring(lastMatchEnd));
@@ -40,15 +42,14 @@ if (lastMatchEnd &lt; from.length())
 <pre><code>// get existing eg, $1 items
 replacedTo = matcher.replaceAll(replacedTo);
 </code></pre>
-
+<p>
 For user just need to edit the rule in the xml with format
+</p>
 <pre><code>&lt;rule&gt;
    &lt;from&gt;^/some/olddir/(.*)$&lt;/from&gt;
    &lt;to&gt;/very/newdir/$1&lt;/to&gt;
 &lt;/rule&gt;
 </code></pre>
-
-</p>
 
 <h3>
 <a href="#format" name="format" class="anchor"><span class="octicon octicon-link"></span></a>
@@ -58,15 +59,16 @@ URL Format
 <p>
 Our website has a seo redirect rule like: <br><br>
 Request URL format
+</p>
 <pre><code>/product/${sku no}/${sku name}/${something-else}
 # Example: /product/123456/apple/?test
 </code></pre>
-
+<p>
 Redirect URL format
+</p>
 <pre><code>query?id=${sku no}&name=${sku name}
 # Example: query?id=123456&name=apple
 </code></pre>
-</p>
 
 <h3>
 <a href="#example1" name="example1" class="anchor"><span class="octicon octicon-link"></span></a>
@@ -75,6 +77,7 @@ Example A
 
 <p>
 To meet the requirement, let's start with a simplest regular expression. Same to edit xml, let's debug in java code for more plain
+</p>
 <pre><code>String targetURL = "query?id=$1&name=$2";
 
 String pattern1 = "^/product/(.*)/(.*)/.*";
@@ -82,6 +85,7 @@ String generalURL = "/product/123456/apple/?test";
 Matcher m1 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(generalURL);
 System.out.println(m1.replaceAll(targetURL));
 </code></pre>
+<p>
 Output: 
 query?id=123456&name=apple <br>
 See? We ok? NO!
@@ -94,10 +98,12 @@ Example B
 
 <p>
 Now append some character in the end of url
+</p>
 <pre><code>String exceptionURL = "/product/123456/apple/test/";
 Matcher m2 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m2.replaceAll(targetURL)); 
 </code></pre>
+<p>
 Output: 
 query?id=123456/apple&name=test <br>
 See that? Parameter id is incorrect. How to fix it?
@@ -110,10 +116,12 @@ Example C
 
 <p>
 Regular expression is matching greedy by default, disable here by character `?`
+</p>
 <pre><code>String pattern2 = "^/product/(.*?)/(.*?)/.*";
 Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
 System.out.println(m3.replaceAll(targetURL)); 
 </code></pre>
+<p>
 Output: 
 query?id=123456&name=apple <br>
 Looks good right? Are we ok now? NO!
@@ -126,10 +134,12 @@ Example D
 
 <p>
 Let's inject some script get agent's cookie
+</p>
 <pre><code>String xssURL = "/product/123456/apple/\n\t&lt;script&gt;alert(document.cookie)&lt;/script&gt;";
 Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL);
 System.out.println(m4.replaceAll(targetURL)); 
 </code></pre>
+<p>
 Output: <br>
 query?id=123456&name=apple <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script&gt;alert(document.cookie)&lt;/script&gt; <br>
@@ -137,13 +147,13 @@ query?id=123456&name=apple <br>
 
 <p>
 The script has been saved raw. If you directly print the value on the page, your website will be under attack:
+</p>
 <pre><code>// access url
 /product/123456/apple/%0A%09%0A%09%0A%09%0A%09/%3Cscript%3Ealert(document.cookie)%3C/script%3E
 
 // output parameter to the page like
 // &lt;link rel="alternate" href="${some parameter}" /&gt;
 </code></pre>
-</p>
 
 <h3>
 <a href="#example5" name="example5" class="anchor"><span class="octicon octicon-link"></span></a>
@@ -152,9 +162,11 @@ Example E
 
 <p>
 Generally enable <a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#DOTALL">DOTALL</a> will solve this problem
+</p>
 <pre><code>Matcher m5 = Pattern.compile(pattern2, Pattern.DOTALL).matcher(xssURL);
 System.out.println(m5.replaceAll(targetURL)); 
 </code></pre>
+<p>
 Output: query?id=123456&name=apple <br>
 However UrlRewriteFilter hard coded the flag to `CASE_INSENSITIVE` as source code shows above.
 </p>
@@ -166,11 +178,13 @@ Example F
 
 <p>
 Fortunately there still is a way to enable dotall mode embedded by "(?s)"
+</p>
 <pre><code>String pattern3 = "^/product/(?s)(.*?)/(.*?)/.*";
 Matcher m6 = Pattern.compile(pattern3, Pattern.CASE_INSENSITIVE).matcher(xssURL);
 System.out.println(m6.replaceAll(targetURL));
 // Output: query?id=123456&name=apple
 </code></pre>
+<p>
 OK then the problem solved, any XSS script will be blocked.
 </p>
 
