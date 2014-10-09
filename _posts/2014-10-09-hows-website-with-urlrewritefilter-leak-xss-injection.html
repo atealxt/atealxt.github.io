@@ -38,13 +38,14 @@ Example A
 </h3>
 
 <p>
-
+To meet the requirement, we start with a simplest regular expression
 <pre><code>String targetURL = "query?id=$1&name=$2";
 
 String pattern1 = "^/product/(.*)/(.*)/.*";
 String generalURL = "/product/123456/apple/?test";
 Matcher m1 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(generalURL);
-System.out.println(m1.replaceAll(targetURL)); // query?id=123456&name=apple
+System.out.println(m1.replaceAll(targetURL)); 
+// Output: query?id=123456&name=apple
 </code></pre>
 </p>
 
@@ -57,7 +58,8 @@ Example B
 
 <pre><code>String exceptionURL = "/product/123456/apple/test/";
 Matcher m2 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
-System.out.println(m2.replaceAll(targetURL)); // query?id=123456/apple&name=test
+System.out.println(m2.replaceAll(targetURL)); 
+// Output: query?id=123456/apple&name=test
 </code></pre>
 </p>
 
@@ -68,9 +70,12 @@ Example C
 
 <p>
 
-<pre><code>String pattern2 = "^/product/(.*?)/(.*?)/.*"; // non greedy
+<pre><code>
+// non greedy
+String pattern2 = "^/product/(.*?)/(.*?)/.*";
 Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
-System.out.println(m3.replaceAll(targetURL)); // query?id=123456&name=apple
+System.out.println(m3.replaceAll(targetURL)); 
+// Output: query?id=123456&name=apple
 </code></pre>
 </p>
 
@@ -83,8 +88,9 @@ Example D
 
 <pre><code>String xssURL = "/product/123456/apple/\n\t&lt;script&gt;alert(document.cookie)&lt;/script&gt;";
 Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL);
-System.out.println(m4.replaceAll(targetURL)); // query?id=123456&name=apple
-                                              //             &lt;script&gt;alert(document.cookie)&lt;/script&gt;
+System.out.println(m4.replaceAll(targetURL)); 
+// Output: query?id=123456&name=apple
+//                     &lt;script&gt;alert(document.cookie)&lt;/script&gt;
 </code></pre>
 </p>
 
@@ -96,7 +102,8 @@ Example E
 <p>
 
 <pre><code>Matcher m5 = Pattern.compile(pattern2, Pattern.DOTALL).matcher(xssURL);
-System.out.println(m5.replaceAll(targetURL)); // query?id=123456&name=apple
+System.out.println(m5.replaceAll(targetURL)); 
+// Output: query?id=123456&name=apple
 </code></pre>
 </p>
 
@@ -107,9 +114,11 @@ Example F
 
 <p>
 
-<pre><code>String pattern3 = "^/product/(?s)(.*?)/(.*?)/.*"; // enable dotall mode embedded.
+<pre><code>// enable dotall mode embedded.
+String pattern3 = "^/product/(?s)(.*?)/(.*?)/.*";
 Matcher m6 = Pattern.compile(pattern3, Pattern.CASE_INSENSITIVE).matcher(xssURL);
-System.out.println(m6.replaceAll(targetURL)); // query?id=123456&name=apple
+System.out.println(m6.replaceAll(targetURL));
+// Output: query?id=123456&name=apple
 </code></pre>
 </p>
 
