@@ -25,8 +25,17 @@ UrlRewriteFilter uses java standard `java.util.regex` package to match regular e
     pattern = Pattern.compile(patternStr, Pattern.CASE_INSENSITIVE);
 }
 </code></pre>
-<a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/RuleBase.java">Matching and replace</a>
-User just need to edit the rule in the xml with format
+<a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/substitution/PatternReplacer.java">Matching and replace</a>
+<pre><code>// put the remaining ending non-matched string
+if (lastMatchEnd < from.length())
+    sb.append(from.substring(lastMatchEnd));
+</code></pre>
+(Similar to the source code prevoius version 3.2 `org.tuckey.web.filters.urlrewrite.RuleBase` )
+<pre><code>// get existing eg, $1 items
+replacedTo = matcher.replaceAll(replacedTo);
+</code></pre>
+
+For User just need to edit the rule in the xml with format
 <pre><code>&lt;rule&gt;
    &lt;from&gt;^/some/olddir/(.*)$&lt;/from&gt;
    &lt;to&gt;/very/newdir/$1&lt;/to&gt;
