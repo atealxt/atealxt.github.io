@@ -135,8 +135,13 @@ Output: query?id=123456&name=apple <br>
 </p>
 
 <p>
-The script has been saved raw. If you directly print the value on the page, your website will be under attack!
-<pre><code>/product/123456/apple/%0A%09%0A%09%0A%09%0A%09/%3Cscript%3Ealert(document.cookie)%3C/script%3E
+The script has been saved raw. If you directly print the value on the page, your website will be under attack:
+<pre><code>
+// access url
+/product/123456/apple/%0A%09%0A%09%0A%09%0A%09/%3Cscript%3Ealert(document.cookie)%3C/script%3E
+
+// output parameter to the page like
+// &lt;link rel="alternate" media="only screen and (max-width: 640px)" href="${linkInfo}" /&gt;
 </code></pre>
 </p>
 
@@ -146,11 +151,12 @@ Example E
 </h3>
 
 <p>
-
+Generally enable <a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#DOTALL">DOTALL</a> will solve this problem
 <pre><code>Matcher m5 = Pattern.compile(pattern2, Pattern.DOTALL).matcher(xssURL);
 System.out.println(m5.replaceAll(targetURL)); 
-// Output: query?id=123456&name=apple
 </code></pre>
+Output: query?id=123456&name=apple <br>
+However UrlRewriteFilter hard coded the flag to `CASE_INSENSITIVE` as source code shows above.
 </p>
 
 <h3>
@@ -159,13 +165,13 @@ Example F
 </h3>
 
 <p>
-
-<pre><code>// enable dotall mode embedded.
-String pattern3 = "^/product/(?s)(.*?)/(.*?)/.*";
+Fortunately there still is a way to enable dotall mode embedded by "(?s)"
+<pre><code>String pattern3 = "^/product/(?s)(.*?)/(.*?)/.*";
 Matcher m6 = Pattern.compile(pattern3, Pattern.CASE_INSENSITIVE).matcher(xssURL);
 System.out.println(m6.replaceAll(targetURL));
 // Output: query?id=123456&name=apple
 </code></pre>
+OK then the problem solved, any XSS script will be blocked.
 </p>
 
 <h3>
@@ -173,5 +179,7 @@ System.out.println(m6.replaceAll(targetURL));
 In Conclusion
 </h3>
 <p>
-Do not use regular expression
+Do not use regular expression.<br>
+Encode any character to the end.<br>
+Use model framework.<br>
 </p>
