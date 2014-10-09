@@ -1,0 +1,16 @@
+---
+layout: default
+title: Hows website with tuckey UrlRewriteFilter leak XSS injection
+description: Be careful of XSS injection if your website is use tuckey UrlRewriteFilter and how to solve it.
+keywords: tuckey UrlRewriteFilter, XSS injection, regular expression, replaceAll
+index: false
+comments: disqus
+---
+<h3>
+<a href="#hows-leak-xss-injection" name="hows-leak-xss-injection" class="anchor"><span class="octicon octicon-link"></span></a>
+{{ page.title }}
+</h3>
+<p>
+We have a J2EE website has been served for many of years, which use UrlRewriteFilter as rewrite module to make url seo friendly.<br>
+Last week we found a XSS injection, here is what lession learned.
+</p>
