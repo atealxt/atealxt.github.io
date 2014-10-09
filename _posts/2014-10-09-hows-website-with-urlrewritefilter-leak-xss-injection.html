@@ -14,3 +14,109 @@ comments: disqus
 We have a J2EE website has been served for many of years, which use UrlRewriteFilter as rewrite module to make url seo friendly.<br>
 Last week we found a XSS injection, here is what lession learned.
 </p>
+
+<h3>
+<a href="#format" name="format" class="anchor"><span class="octicon octicon-link"></span></a>
+URL Format
+</h3>
+
+<p>
+Request URL format
+<pre><code>/product/${sku no}/${sku name}/${something-else}
+# Example: /product/123456/apple/?test
+</code></pre>
+
+Redirect URL format
+<pre><code>query?id=${sku no}&name=${sku name}
+# Example: query?id=123456&name=apple
+</code></pre>
+</p>
+
+<h3>
+<a href="#example1" name="example1" class="anchor"><span class="octicon octicon-link"></span></a>
+Example A
+</h3>
+
+<p>
+
+<pre><code>String targetURL = "query?id=$1&name=$2";
+
+String pattern1 = "^/product/(.*)/(.*)/.*";
+String generalURL = "/product/123456/apple/?test";
+Matcher m1 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(generalURL);
+System.out.println(m1.replaceAll(targetURL)); // query?id=123456&name=apple
+</code></pre>
+</p>
+
+<h3>
+<a href="#example2" name="example2" class="anchor"><span class="octicon octicon-link"></span></a>
+Example B
+</h3>
+
+<p>
+
+<pre><code>String exceptionURL = "/product/123456/apple/test/";
+Matcher m2 = Pattern.compile(pattern1, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
+System.out.println(m2.replaceAll(targetURL)); // query?id=123456/apple&name=test
+</code></pre>
+</p>
+
+<h3>
+<a href="#example3" name="example3" class="anchor"><span class="octicon octicon-link"></span></a>
+Example C
+</h3>
+
+<p>
+
+<pre><code>String pattern2 = "^/product/(.*?)/(.*?)/.*"; // non greedy
+Matcher m3 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(exceptionURL);
+System.out.println(m3.replaceAll(targetURL)); // query?id=123456&name=apple
+</code></pre>
+</p>
+
+<h3>
+<a href="#example4" name="example4" class="anchor"><span class="octicon octicon-link"></span></a>
+Example D
+</h3>
+
+<p>
+
+<pre><code>String xssURL = "/product/123456/apple/\n\t<script>alert(document.cookie)</script>";
+Matcher m4 = Pattern.compile(pattern2, Pattern.CASE_INSENSITIVE).matcher(xssURL);
+System.out.println(m4.replaceAll(targetURL)); // query?id=123456&name=apple
+                                              //             <script>alert(document.cookie)</script>
+</code></pre>
+</p>
+
+<h3>
+<a href="#example5" name="example5" class="anchor"><span class="octicon octicon-link"></span></a>
+Example E
+</h3>
+
+<p>
+
+<pre><code>Matcher m5 = Pattern.compile(pattern2, Pattern.DOTALL).matcher(xssURL);
+System.out.println(m5.replaceAll(targetURL)); // query?id=123456&name=apple
+</code></pre>
+</p>
+
+<h3>
+<a href="#example6" name="example6" class="anchor"><span class="octicon octicon-link"></span></a>
+Example F
+</h3>
+
+<p>
+
+<pre><code>String pattern3 = "^/product/(?s)(.*?)/(.*?)/.*"; // enable dotall mode embedded.
+Matcher m6 = Pattern.compile(pattern3, Pattern.CASE_INSENSITIVE).matcher(xssURL);
+System.out.println(m6.replaceAll(targetURL)); // query?id=123456&name=apple
+</code></pre>
+</p>
+
+<h3>
+<a href="#conclusion" name="conclusion" class="anchor"><span class="octicon octicon-link"></span></a>
+In Conclusion
+</h3>
+<p>
+
+</p>
