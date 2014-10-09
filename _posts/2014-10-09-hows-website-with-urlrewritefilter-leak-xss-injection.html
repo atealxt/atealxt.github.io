@@ -38,10 +38,8 @@ UrlRewriteFilter uses java standard `java.util.regex` package to match regular e
 if (lastMatchEnd &lt; from.length())
     sb.append(from.substring(lastMatchEnd));
 </code></pre>
-<p>
-(Similar to the source code prevoius version 3.2 <code>org.tuckey.web.filters.urlrewrite.RuleBase</code> )
-</p>
-<pre><code>// get existing eg, $1 items
+<pre><code>// (Similar to the source code prevoius version 3.2 <code>org.tuckey.web.filters.urlrewrite.RuleBase</code> )
+// get existing eg, $1 items
 replacedTo = matcher.replaceAll(replacedTo);
 </code></pre>
 <p>
