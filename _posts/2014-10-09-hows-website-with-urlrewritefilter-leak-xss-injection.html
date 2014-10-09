@@ -16,7 +16,7 @@ Last week we found a XSS injection, here is what lession learned.
 </p>
 
 <p>
-Firstly let's involve UrlRewriteFilter.
+Firstly let's involve UrlRewriteFilter.<br>
 UrlRewriteFilter uses java standard `java.util.regex` package to match regular expression and do redirect.
 <a href="https://code.google.com/p/urlrewritefilter/source/browse/trunk/src/main/java/org/tuckey/web/filters/urlrewrite/utils/RegexPattern.java">Create Pattern object</a>
 <pre><cod>if (caseSensitive) {
