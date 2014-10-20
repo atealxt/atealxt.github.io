@@ -1,1 +1,1 @@
-Sitemap: https://atealxt.github.io/sitemap.xml
+Sitemap: http://atealxt.github.io/sitemap.xml
