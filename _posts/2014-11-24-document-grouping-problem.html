@@ -166,9 +166,20 @@ Querying
 <p>
 Now let's use aggregation at search. <br>
 Aggregation (called Faceting in some search engine) is similar to "Group By" in relational database.
-Trigger the search with query term and point out the fields to aggregate, you can get all matched result with gather family results.
+Throwing search with query term and point out the fields to aggregate, you can get all matched result with gather family results.<br>
+(I'm not go through the detail of aggregation search API here, please refer to <a href="https://wiki.apache.org/solr/SimpleFacetParameters" target="_blank">SimpleFacetParameters</a> for Solr and <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html" target="_blank">Search Aggregations</a> for Elasticsearch.)
 </p>
 
 <p>
-I'm not go through the detail of aggregation search API here, please refer to <a href="https://wiki.apache.org/solr/SimpleFacetParameters" target="_blank">SimpleFacetParameters</a> for Solr and <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html" target="_blank">Search Aggregations</a> for Elasticsearch.
+If you want to show all family products at the same zone, use returned family id query all others related from DB.
+</p>
+
+<h3>
+<a href="#in-conclusion" name="in-conclusion" class="anchor"><span class="octicon octicon-link"></span></a>
+In Conclusion
+</h3>
+
+<p>
+Search Experience is very very important, as a search engineer you need to keep looking into it and try to make some improvement every single day. <br>
+In addition to all above, like AJAX, Cache, CDN, Data Mining, there are still so many things worth doing.
 </p>
