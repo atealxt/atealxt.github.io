@@ -22,5 +22,15 @@ Sounds good, right? Unfortunately, search experience may pretty bad.
 Because of each kind of clothes is likely to have many colors and sizes, you search result is filled with "same" product.
 </p>
 <p>
-This is I called "Document Grouping Problem". So how to solve it? Quick answer: sku data fields redundancy with aggregation search.
+This is I called "<code>Document Grouping Problem</code>". So how to solve it? Quick answer: sku data fields redundancy with aggregation search.
+</p>
+
+<h3>
+<a href="#data-structure" name="data-structure" class="anchor"><span class="octicon octicon-link"></span></a>
+Data Structure
+</h3>
+
+<p>
+First of all, regards different color/size as different product is reasonable.
+They have separate price and stock status, thay are <a target="_blank" href="http://en.wikipedia.org/wiki/Stock_keeping_unit">SKUs</a>.
 </p>
