@@ -22,7 +22,8 @@ Sounds good, right? Unfortunately, search experience may pretty bad.
 Because of each kind of clothes is likely to have many colors and sizes, you search result is filled with "same" product.
 </p>
 <p>
-This is I called "<code>Document Grouping Problem</code>". So how to solve it? Quick answer: sku data fields redundancy with aggregation search.
+This is I called "<code>Document Grouping Problem</code>". <br>
+How to solve it? Quick answer: sku data fields redundancy with aggregation search.
 </p>
 
 <h3>
@@ -32,5 +33,43 @@ Data Structure
 
 <p>
 First of all, regards different color/size as different product is reasonable.
-They have separate price and stock status, thay are <a target="_blank" href="http://en.wikipedia.org/wiki/Stock_keeping_unit">SKUs</a>.
+They have separate price and stock status, thay are <a target="_blank" href="http://en.wikipedia.org/wiki/Stock_keeping_unit">SKUs</a>. <br>
+In the search index saving skus Cartesian Product:
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>SKU#</th>
+      <th>NAME</th>
+      <th>KEYWORD (color, size)</th>
+      <th>FAMILY_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10001</td>
+      <td>Sweetly T-shirt</td>
+      <td>BLue, M</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>10002</td>
+      <td>Sweetly T-shirt</td>
+      <td>Blue, XL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>10003</td>
+      <td>Sweetly T-shirt</td>
+      <td>Red, M</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>10004</td>
+      <td>Sweetly T-shirt</td>
+      <td>Red, XL</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
