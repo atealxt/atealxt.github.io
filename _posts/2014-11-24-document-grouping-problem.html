@@ -37,7 +37,7 @@ They have separate price and stock status, thay are <a target="_blank" href="htt
 </p>
 
 <p>
-In the search index saving skus Cartesian Product:
+In the Search Index saving skus Cartesian Product:
 </p>
 
 <table>
@@ -101,9 +101,66 @@ In the search index saving skus Cartesian Product:
   </tbody>
 </table>
 
+<p>
+For the index building, prepare the family data in the database, separate a table for family info.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>SKU#</th>
+      <th>FAMILY_ID</th>
+      <th>ATTR_NAME</th>
+      <th>ATTR_VALUE</th>
+      <th>ATTR_TYPE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10001</td>
+      <td>1</td>
+      <td>Color</td>
+      <td>Blue</td>
+      <td>Swatch</td>
+    </tr>
+    <tr>
+      <td>10001</td>
+      <td>1</td>
+      <td>Size</td>
+      <td>M</td>
+      <td>Dropdown</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>10008</td>
+      <td>2</td>
+      <td>Color</td>
+      <td>Red</td>
+      <td>Swatch</td>
+    </tr>
+    <tr>
+      <td>10008</td>
+      <td>2</td>
+      <td>Size</td>
+      <td>XL</td>
+      <td>Dropdown</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+(Above DB table is just a example, it depends on your product management system and may need optimize.)
+</p>
+
 <h3>
-<a href="#aggregation-querying" name="aggregation-querying" class="anchor"><span class="octicon octicon-link"></span></a>
-Aggregation Querying
+<a href="#querying" name="querying" class="anchor"><span class="octicon octicon-link"></span></a>
+Querying
 </h3>
 
 <p>
