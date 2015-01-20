@@ -3,7 +3,7 @@ layout: default
 title: Quartz Clustering Job on AWS
 description: Quartz Clustering Job with JDBC Store Example
 keywords: Quartz Clustering, Quartz Clustering Config Example, Quartz Clustering Code Example
-index: false
+index: true
 comments: disqus
 ---
 <h3>
@@ -11,7 +11,8 @@ comments: disqus
 {{ page.title }}
 </h3>
 <p>
-We have a application running at <a target="_blank" href="https://cloud.google.com/appengine/">GAE</a> and plan to move to <a target="_blank" href="http://aws.amazon.com/elasticbeanstalk/">AWS Beanstalk</a>. GAE has <a target="_blank" href="https://cloud.google.com/appengine/docs/java/config/cron">Cron</a> feature for Scheduled Tasks which Beanstalk don't. Quartz is the "Cron" in the java world, and support clustering which is required for us. Looks it is a good replacement, so we decide to have a try.
+We have a application running with <a target="_blank" href="https://cloud.google.com/appengine/">GAE</a> and plan to move to <a target="_blank" href="http://aws.amazon.com/elasticbeanstalk/">AWS Beanstalk</a>. GAE has <a target="_blank" href="https://cloud.google.com/appengine/docs/java/config/cron">Cron</a> feature for Scheduled Tasks which Beanstalk don't. <br>
+Quartz is the "Cron" in the java world, and support clustering which is required for us. Looks it is a good replacement, so we decide to have a try.
 </p>
 
 <h3>
@@ -29,7 +30,8 @@ Quartz Clustering relies on Database:
 </p>
 
 <p>
-From the architecture you can see that firstly you should have a high availability DB solution. Since AWS has <a target="_blank" href=""></a>RDS(http://aws.amazon.com/rds/), this is not a issue for us.
+From the architecture you can see that firstly you should have a high availability DB solution. 
+Since AWS has <a target="_blank" href="http://aws.amazon.com/rds/">RDS</a>, this is not an issue for us.
 </p>
 
 <h3>
@@ -43,7 +45,7 @@ Note that every node should have the same <code>org.quartz.scheduler.instanceNam
 </p>
 
 <p>
-Quartz provides script for most kinds of DB, you can find them under <code>downloaded_distribution_file/docs/dbTables</code>.
+Quartz provides script for most kinds of DB, you can find them under <code>downloaded_distribution_file/docs/dbTables</code>
 </p>
 
 <h3>
@@ -151,7 +153,7 @@ In Conclusion
 </h3>
 
 <p>
-The Pros and Cons of Quartz Clustering
+The Pros and Cons of Quartz Clustering:
 </p>
 
 <table>
@@ -176,3 +178,7 @@ The Pros and Cons of Quartz Clustering
 		</tr>
 	</tbody>
 </table>
+
+<p>
+Next I'm going to try <a target="_blank" href="http://zookeeper.apache.org/">ZooKeeper</a>, there now exists a Lock implementation under recipes directory.
+</p>
