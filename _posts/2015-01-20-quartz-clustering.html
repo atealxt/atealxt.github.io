@@ -1,0 +1,178 @@
+---
+layout: default
+title: Quartz Clustering Job on AWS
+description: Quartz Clustering Job with JDBC Store Example
+keywords: Quartz Clustering, Quartz Clustering Config Example, Quartz Clustering Code Example
+index: false
+comments: disqus
+---
+<h3>
+<a href="#quartz-clustering" name="quartz-clustering" class="anchor"><span class="octicon octicon-link"></span></a>
+{{ page.title }}
+</h3>
+<p>
+We have a application running at <a target="_blank" href="https://cloud.google.com/appengine/">GAE</a> and plan to move to <a target="_blank" href="http://aws.amazon.com/elasticbeanstalk/">AWS Beanstalk</a>. GAE has <a target="_blank" href="https://cloud.google.com/appengine/docs/java/config/cron">Cron</a> feature for Scheduled Tasks which Beanstalk don't. Quartz is the "Cron" in the java world, and support clustering which is required for us. Looks it is a good replacement, so we decide to have a try.
+</p>
+
+<h3>
+<a href="#architecture" name="architecture" class="anchor"><span class="octicon octicon-link"></span></a>
+Architecture
+</h3>
+
+<p>
+Quartz Clustering relies on Database:
+</p>
+
+<p>
+<img src="http://www.quartz-scheduler.org/images/documentation/2.x/quartz_cluster.png" title="quartz cluster architecture"><br>
+(Pic from <a target="_blank" href="http://www.quartz-scheduler.org/documentation/quartz-2.x/configuration/ConfigJDBCJobStoreClustering">Official Doc</a>)
+</p>
+
+<p>
+From the architecture you can see that firstly you should have a high availability DB solution. Since AWS has <a target="_blank" href=""></a>RDS(http://aws.amazon.com/rds/), this is not a issue for us.
+</p>
+
+<h3>
+<a href="#configuration" name="configuration" class="anchor"><span class="octicon octicon-link"></span></a>
+Configuration
+</h3>
+
+<p>
+Put a <code>quartz.properties</code> into your app classpath, make sure to copy it and distribute to other instances.<br>
+Note that every node should have the same <code>org.quartz.scheduler.instanceName</code>. More detail about file content please refer to <a target="_blank" href="http://www.quartz-scheduler.org/documentation/quartz-2.x/configuration/ConfigJDBCJobStoreClustering">Official Doc</a>.
+</p>
+
+<p>
+Quartz provides script for most kinds of DB, you can find them under <code>downloaded_distribution_file/docs/dbTables</code>.
+</p>
+
+<h3>
+<a href="#code-example" name="code-example" class="anchor"><span class="octicon octicon-link"></span></a>
+Java Code
+</h3>
+
+<p>
+Let's create a Logging Job:
+</p>
+
+<pre><code>import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.SchedulerException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class LoggingJob implements Job {
+
+	private static Logger _log = LoggerFactory.getLogger(LoggingJob.class);
+
+	@Override
+	public void execute(JobExecutionContext paramJobExecutionContext) throws JobExecutionException {
+		_log.info(paramJobExecutionContext.toString());
+		try {
+			_log.info(paramJobExecutionContext.getScheduler().getSchedulerName() + " execute!");
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}
+}
+</code></pre>
+
+<p>
+The scheduler runner looks like:
+</p>
+
+<pre><code>import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
+
+public class QuartzTest {
+
+	public static void main(String[] args) {
+
+		Scheduler scheduler = null;
+		try {
+			scheduler = StdSchedulerFactory.getDefaultScheduler();
+			JobDetail job = JobBuilder.newJob(LoggingJob.class).requestRecovery().withIdentity("job1", "group1").build();
+			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1").startNow()
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2).repeatForever()).build();
+
+			if (scheduler.getJobDetail(job.getKey()) == null) {
+				scheduler.scheduleJob(job, trigger);
+			}
+			scheduler.start();
+
+			try {
+				Thread.sleep(100000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			scheduler.clear();
+			scheduler.shutdown();
+		} catch (SchedulerException se) {
+			se.printStackTrace();
+			if (scheduler != null) {
+				try {
+					scheduler.clear();
+					scheduler.shutdown();
+				} catch (SchedulerException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}
+</code></pre>
+
+<p>
+Running <code>QuartzTest</code> to see <code>LoggingJob</code> print following at console:
+</p>
+
+<pre><code>[INFO] 20 Jan 11:16:30.926 AM MyClusteredScheduler_Worker-1 [test.LoggingJob]
+JobExecutionContext: trigger: 'group1.trigger1 job: group1.job1 fireTime: 'Tue Jan 20 11:16:30 CST 2015 scheduledFireTime: Tue Jan 20 11:16:05 CST 2015 previousFireTime: 'Tue Jan 20 11:16:03 CST 2015 nextFireTime: Tue Jan 20 11:16:07 CST 2015 isRecovering: false refireCount: 0
+
+[INFO] 20 Jan 11:16:30.926 AM MyClusteredScheduler_Worker-1 [test.LoggingJob]
+MyClusteredScheduler execute!
+</code></pre>
+
+<p>
+Then start more <code>QuartzTest</code>, you will find only 1 <code>LoggingJob</code> is scheduled at the same time. If you terminate the first one, <code>LoggingJob</code> from another node is awoken.
+</p>
+
+<h3>
+<a href="#conclusion" name="conclusion" class="anchor"><span class="octicon octicon-link"></span></a>
+In Conclusion
+</h3>
+
+<p>
+The Pros and Cons of Quartz Clustering
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Pros</th>
+			<th>Cons</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Simply architecture</td>
+			<td>Relies on database high availability</td>
+		</tr>
+		<tr>
+			<td>Suit for small/mid level clustering</td>
+			<td>DB could be the bottleneck and latent risk</td>
+		</tr>
+		<tr>
+			<td>Less invasiveness. Can be in/out application.</td>
+			<td>Clock sync is required between nodes.</td>
+		</tr>
+	</tbody>
+</table>
