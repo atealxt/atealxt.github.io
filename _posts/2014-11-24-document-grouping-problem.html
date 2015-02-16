@@ -171,7 +171,15 @@ Throwing search with query term and point out the fields to aggregate, you can g
 </p>
 
 <p>
-If you want to show all family products at the same zone, use returned family id query all others related from DB.
+<code>WARNING</code><br>
+Please NOTE that above solution will only working when you don't need exact record pagination info (like fetch 20 records at every scroll down). 
+Otherwise you have to fetch all records at the same time and "group by" manually.<br>
+(<a href="https://docs.oracle.com/cd/E29584_01/webhelp/mdex_basicDev/src/rbdv_urlparams_nu.html" target="_blank">Endeca Nu</a> native support returning records aggregation)
+</p>
+
+<p>
+A alternative solution is create a secondary index for family product. 
+Firstly query as normal, if you want to show all family products at the same zone, use returned family id query all others related from DB.
 </p>
 
 <h3>
