@@ -26,21 +26,24 @@ Order issue
 </h3>
 
 <p>
-Web-styled application usually have two entrance: <a href="https://atealxt.github.io/2014/08/20/architecture-of-search-platform.html#search-browse" target="_blank">Search and Browse</a>.
-When you input term and search, the result order will be descent by matched "score", normally it is fine. <br>
+Web-styled application usually have two entrance: <a href="https://atealxt.github.io/2014/08/20/architecture-of-search-platform.html#search-browse" target="_blank">Search and Browse</a>. <br>
+When you input term and search, the result order will be descent by matched "score", normally it is fine.
+</p>
+<p>
 But how about products have the same score? Lucene and a lot of search libraries sort them by index order. See <a href="http://stackoverflow.com/questions/10310194/how-are-results-ordered-in-solr-in-a-match-all-docs-query" target="_blank">stackoverflow question</a>.
-That will be a problem, especially in Browse mode. Base on the data above, if I query skus for catalog "Laptop Accessories", results will be:
+That will be a problem, especially in Browse mode. <br>
+Base on the data above, if I query skus for catalog under "Laptop Accessories", results will be:
 </p>
 
 <table>
   <tbody>
-    <tr><td><code>Brand-1</code> Laptop Chill Mat</td></tr>
-    <tr><td><code>Brand-1</code> Metro Roller Notebook Bag</td></tr>
-    <tr><td><code>Brand-1</code> Laptop/LCD Privacy Filter</td></tr>
-    <tr><td>...</td></tr>
-    <tr><td><code>Brand-2</code> Laptop Chill Mat</td></tr>
-    <tr><td><code>Brand-2</code> Metro Roller Notebook Bag</td></tr>
-    <tr><td><code>Brand-2</code> Laptop/LCD Privacy Filter</td></tr>
+    <tr><td>1</td><td><code>Brand-1</code> Laptop Chill Mat</td></tr>
+    <tr><td>2</td><td><code>Brand-1</code> Metro Roller Notebook Bag</td></tr>
+    <tr><td>3</td><td><code>Brand-1</code> Laptop/LCD Privacy Filter</td></tr>
+    <tr><td>...</td><td>...</td></tr>
+    <tr><td>7</td><td><code>Brand-2</code> Laptop Chill Mat</td></tr>
+    <tr><td>8</td><td><code>Brand-2</code> Metro Roller Notebook Bag</td></tr>
+    <tr><td>9</td><td><code>Brand-2</code> Laptop/LCD Privacy Filter</td></tr>
   </tbody>
 </table>
 
