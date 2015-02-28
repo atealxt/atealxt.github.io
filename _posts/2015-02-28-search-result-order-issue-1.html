@@ -78,31 +78,34 @@ In this case lower level dimentions will have higher rank. You can write your ow
 </p>
 
 <p>
-Then design a encoding method for field rank value. <br>
+Next design a encoding method for field rank value. <br>
 For example, put the catalog rank# in the first of rank, with given a sequence# follows for each brand:
 </p>
-
-<table>
-  <thead>
-    <tr>
-    <th>SKU</th>
-    <th>Name</th>
-    <th>Rank</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>100001</td><td><code>Brand-1</code> Laptop Chill Mat</td><td>81</td></tr>
-    <tr><td>100002</td><td><code>Brand-1</code> Metro Roller Notebook Bag</td><td>82</td></tr>
-    <tr><td>100003</td><td><code>Brand-1</code> Laptop/LCD Privacy Filter</td><td>83</td></tr>
-    <tr><td>...</td><td>...</td></tr>
-    <tr><td>100104</td><td><code>Brand-2</code> Laptop Chill Mat</td><td>81</td></tr>
-    <tr><td>100105</td><td><code>Brand-2</code> Metro Roller Notebook Bag</td><td>82</td></tr>
-    <tr><td>100106</td><td><code>Brand-2</code> Laptop/LCD Privacy Filter</td><td>83</td></tr>
-  </tbody>
-</table>
 
 <p>
 <a href="/images/20150228/default_order_issue3.jpg" target="_blank">
   <img src="/images/20150228/default_order_issue3.jpg" alt="default_order_issue3 image" title="Click to View Full Size"/>
 </a>
 </p>
+
+<p>
+After all, query with rank desc, you'll see products is show with brand mixed.
+</p>
+
+<table>
+  <thead>
+    <tr>
+    <th>Name</th>
+    <th>Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>Brand-2</code> Laptop/LCD Privacy Filter</td><td>83</td></tr>
+    <tr><td><code>Brand-1</code> Laptop/LCD Privacy Filter</td><td>83</td></tr>
+    <tr><td><code>Brand-2</code> Metro Roller Notebook Bag</td><td>82</td></tr>
+    <tr><td><code>Brand-1</code> Metro Roller Notebook Bag</td><td>82</td></tr>
+    <tr><td><code>Brand-2</code> Laptop Chill Mat</td><td>81</td></tr>
+    <tr><td><code>Brand-1</code> Laptop Chill Mat</td><td>81</td></tr>
+    <tr><td>...</td><td>...</td></tr>
+  </tbody>
+</table>
