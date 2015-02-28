@@ -64,7 +64,7 @@ Rank Field
 
 <p>
 To solve the issue, we need to set a secondary sort field/column after score (let's say "rank"), to handle the cases when score is same.<br>
-Firstly have a order with catalog:
+Firstly have an order with catalog:
 </p>
 
 <p>
@@ -74,11 +74,11 @@ Firstly have a order with catalog:
 </p>
 
 <p>
-In this case lower level dimentions will have higher rank. You can write your own business order, set whatever catalog higher you want in the same nav level.
+In this case lower level dimensions will have higher rank. You can write your own business order, set whatever catalog higher you want in the same nav level.
 </p>
 
 <p>
-Next design a encoding method for field rank value. <br>
+Next design an encoding method for field rank value. <br>
 For example, put the catalog rank# in the first of rank, with given a sequence# follows for each brand:
 </p>
 
@@ -115,6 +115,6 @@ In Conclusion
 </h3>
 
 <p>
-Field rank encoding is not simple, it is hard. Above example may not have good exprience while Brand-1's product is more than Brand-2's (vise versa), and don't have product factor (promo, seller, stock etc.) support. But it is the basic way to solve the issue.<br>
+Field rank encoding is not simple, it is hard. Above example may not have good experience while Brand-1's product is more than Brand-2's (vice versa), and don't have product factor (promo, seller, stock etc.) support. But it is the basic way to solve the issue.<br>
 About factor of rank algorithm will be in another topic.
 </p>
