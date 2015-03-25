@@ -168,6 +168,11 @@ footer {
   bottom:50px;
 }
 
+.view > span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
