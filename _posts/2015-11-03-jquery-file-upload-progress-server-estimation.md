@@ -47,8 +47,6 @@ $('#fileupload').fileupload({
 Parameter `progressServerRate`: estimated server progress percentage.
 With it the progress bar will keep 30 percent spaces for server consume.
 
-Well done? Hold on. 
-
 ## Exponential decay
 
 It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server is responded. 
