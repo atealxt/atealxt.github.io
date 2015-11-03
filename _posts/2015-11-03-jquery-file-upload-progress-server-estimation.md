@@ -25,6 +25,7 @@ The progress is hanging on 100% and wait for server's response.
 
 ## Server progress
 We can make the server process asynchronized and return to client instantly. It is the principle to design distribute system, although complicated.
+
 But what if you just need a simple or temp solution/fix, there is another way which is estimate server consumed time and include into the whole progress - simulate the server progress.
 
 Suppose server spend 30% of times:
@@ -51,6 +52,7 @@ Well done? Hold on.
 ## Exponential decay
 
 It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server is responded. 
+
 Obviously [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
 
 [pic](https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2)
@@ -96,7 +98,9 @@ There are several rules to help estimate parameter:
 ## Firefox bug
 
 When I develop the enhancement, I found a progress event bug in firefox didn't update progress after complete upload and wait server response, chrome do.
+
 My environment:
-Firefox 41.0.2
-Windows 7
+* Firefox 41.0.2
+* Windows 7
+* 
 If you know something kindly let me know.
