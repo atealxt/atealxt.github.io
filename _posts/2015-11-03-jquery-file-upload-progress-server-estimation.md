@@ -7,7 +7,7 @@ index: false
 comments: disqus
 ---
 
-# jQuery File Upload Progress Estimation
+# jQuery File Upload Progress Server Estimation
 
 ## jQuery File Upload Plugin
 
