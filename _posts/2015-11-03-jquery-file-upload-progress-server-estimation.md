@@ -7,7 +7,7 @@ index: false
 comments: disqus
 ---
 
-# jQuery File Upload Progress Server Estimation
+# jQuery File Upload Progress Estimation
 
 ## blueimp/jQuery-File-Upload Plugin
 
@@ -29,7 +29,7 @@ But what if you just need a simple or temp solution/fix, there is another way wh
 
 Suppose server spend 30% of times:
 
-```javascript
+```
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -61,13 +61,13 @@ For use the value update to progress percentage, inverse power function to expon
 [pic](https://www.google.com/?gws_rd=ssl#q=y%3Dx^2)
 y=x^2
 
-```javascript
+```
 // source code
 var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
 ```
 
-```javascript
+```
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
