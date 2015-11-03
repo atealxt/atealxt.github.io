@@ -18,7 +18,7 @@ The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-Fil
 
 ## Problem
 The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), 
-However any server-side processe like validation or persistence will not effect to the event.
+However any server-side processes like validation or persistence will not effect to the event.
 
 01_no_server.gif
 The progress is hanging on 100% and wait for server's response.
@@ -46,12 +46,12 @@ $('#fileupload').fileupload({
 Parameter `progressServerRate`: estimated server progress percentage.
 With it the progress bar will keep 30 percent spaces for server consume.
 
-## Exponential decay
-
 Well done? Hold on. 
 
-It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server responsed. 
-Obivlisly [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
+## Exponential decay
+
+It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server is responded. 
+Obviously [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
 
 [pic](https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2)
 y=1/x^2
@@ -92,10 +92,10 @@ There are several rules to help estimate parameter:
 * server performance. In general, server is fast than user-end upload.
 * larger file, slower
 
-## firefox bug
+## Firefox bug
 
 When I develop the enhancement, I found a progress event bug in firefox didn't update progress after complete upload and wait server response, chrome do.
-My enviroment:
+My environment:
 Firefox 41.0.2
 Windows 7
 If you know something kindly let me know.
