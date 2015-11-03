@@ -63,10 +63,12 @@ For use the value update to progress percentage, inverse power function to expon
 y=x^2
 
 ```javascript
-// source code
+// source code of calculate increased percentage
 var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
 ```
+
+Parameter `progressServerDecayExp`: Server progress exponential decay.
 
 ```javascript
 // test code
@@ -84,7 +86,6 @@ $('#fileupload').fileupload({
 });
 ```
 
-Parameter `progressServerDecayExp`: Server progress exponential decay.
 More detail please refer to commit [1767bf7](https://github.com/atealxt/jQuery-File-Upload/commit/1767bf75f9c7bedcd393b4208cf55d6cfe671645).
 
 BTW [Easing functions](http://easings.net/) is a great easing cheat sheet visualization website.
