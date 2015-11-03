@@ -1,13 +1,13 @@
 ---
 layout: default
-title: jQuery File Upload Progress Server Estimation
+title: File Upload Progress Server Estimation
 description: 
 keywords: 
 index: false
 comments: disqus
 ---
 
-# jQuery File Upload Progress Server Estimation
+# File Upload Progress Server Estimation
 
 ## jQuery File Upload Plugin
 
