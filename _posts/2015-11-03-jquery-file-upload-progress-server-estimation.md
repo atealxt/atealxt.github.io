@@ -11,8 +11,8 @@ comments: disqus
 
 ## jQuery File Upload Plugin
 
-[blueimp/jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) is a File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery.
- -- per official project description
+> [blueimp/jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) is a File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery.
+-- per official project description
 
 The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support), you can create a progress bar indicating the upload progress status.
 
