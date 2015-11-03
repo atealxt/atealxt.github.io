@@ -11,13 +11,13 @@ comments: disqus
 
 ## blueimp/jQuery-File-Upload Plugin
 
-[blueimp/jQuery-File-Upload|https://github.com/blueimp/jQuery-File-Upload] is a File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery.
+[blueimp/jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) is a File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery.
  -- per official project description
 
-The plugin has a feature [Upload progress|https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support], you can create a progress bar indicating the upload progress status.
+The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support), you can create a progress bar indicating the upload progress status.
 
 ## Problem
-The progress is based on [ProgressEvent|https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent], 
+The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), 
 However any server-side processe like validation or persistence will not effect to the event.
 
 01_no_server.gif
@@ -51,14 +51,14 @@ With it the progress bar will keep 30 percent spaces for server consume.
 Well done? Hold on. 
 
 It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server responsed. 
-Obivlisly [Exponential Decay|https://en.wikipedia.org/wiki/Exponential_decay] is suitable here.
+Obivlisly [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
 
-[pic|https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2]
+[pic](https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2)
 y=1/x^2
 
 For use the value update to progress percentage, inverse power function to exponential function:
 
-[pic|https://www.google.com/?gws_rd=ssl#q=y%3Dx^2 ]
+[pic](https://www.google.com/?gws_rd=ssl#q=y%3Dx^2)
 y=x^2
 
 ```javascript
@@ -84,7 +84,7 @@ $('#fileupload').fileupload({
 Parameter `progressServerDecayExp`: Server progress exponential decay
 More detail about code please refer to XXX.
 
-BTW [Easing functions|http://easings.net/] is a great easing cheat sheet visualization website.
+BTW [Easing functions](http://easings.net/) is a great easing cheat sheet visualization website.
 
 ## Estimate parameter value
 
