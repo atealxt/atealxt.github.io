@@ -84,7 +84,7 @@ $('#fileupload').fileupload({
 ```
 
 Parameter `progressServerDecayExp`: Server progress exponential decay.
-More detail please refer to 1767bf75f9c7bedcd393b4208cf55d6cfe671645.
+More detail please refer to commit [1767bf7](https://github.com/atealxt/jQuery-File-Upload/commit/1767bf75f9c7bedcd393b4208cf55d6cfe671645).
 
 BTW [Easing functions](http://easings.net/) is a great easing cheat sheet visualization website.
 
