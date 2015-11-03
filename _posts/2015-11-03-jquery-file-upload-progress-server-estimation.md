@@ -91,8 +91,8 @@ BTW [Easing functions](http://easings.net/) is a great easing cheat sheet visual
 ## Estimate parameter value
 
 There are several rules to help estimate parameter:
-* server performance. In general, server is fast than user-end upload.
-* larger file, slower
+* Server performance. In general, server is fast than user-end upload.
+* Larger file, slower server response.
 
 ## Firefox bug
 
