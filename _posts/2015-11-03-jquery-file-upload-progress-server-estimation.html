@@ -29,6 +29,7 @@ But what if you just need a simple or temp solution/fix, there is another way wh
 
 Suppose server spend 30% of times:
 
+```javascript
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -40,6 +41,7 @@ $('#fileupload').fileupload({
     },
     progressServerRate: 0.3
 });
+```
 
 Parameter `progressServerRate`: estimated server progress percentage.
 With it the progress bar will keep 30 percent spaces for server consume.
@@ -59,12 +61,13 @@ For use the value update to progress percentage, inverse power function to expon
 [pic|https://www.google.com/?gws_rd=ssl#q=y%3Dx^2 ]
 y=x^2
 
-{source code}
+```javascript
+// source code
 var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
-{source code}
+```
 
-{code}
+```javascript
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -76,7 +79,7 @@ $('#fileupload').fileupload({
     },
     progressServerRate: 0.3
 });
-{code}
+```
 
 Parameter `progressServerDecayExp`: Server progress exponential decay
 More detail about code please refer to XXX.
