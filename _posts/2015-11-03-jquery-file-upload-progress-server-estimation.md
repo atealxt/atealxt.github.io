@@ -15,7 +15,7 @@ comments: disqus
 
 -- per official project description
 
-The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support), you can create a progress bar indicating the upload progress status.
+The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin#how-to-display-upload-progress-with-the-basic-plugin) support most [model](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support#upload-progress) server, you can create a progress bar indicating the upload progress status.
 
 ## Problem
 The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), however any server-side processes like validation or persistence will not effect to the event.
