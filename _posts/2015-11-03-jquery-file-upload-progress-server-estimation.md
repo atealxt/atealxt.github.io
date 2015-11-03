@@ -17,8 +17,7 @@ comments: disqus
 The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support), you can create a progress bar indicating the upload progress status.
 
 ## Problem
-The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), 
-However any server-side processes like validation or persistence will not effect to the event.
+The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), however any server-side processes like validation or persistence will not effect to the event.
 
 01_no_server.gif
 The progress is hanging on 100% and wait for server's response.
@@ -31,6 +30,7 @@ But what if you just need a simple or temp solution/fix, there is another way wh
 Suppose server spend 30% of times:
 
 ```javascript
+// test code
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -70,6 +70,7 @@ data.percent += incr;
 ```
 
 ```javascript
+// test code
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -84,8 +85,8 @@ $('#fileupload').fileupload({
 });
 ```
 
-Parameter `progressServerDecayExp`: Server progress exponential decay
-More detail about code please refer to XXX.
+Parameter `progressServerDecayExp`: Server progress exponential decay.
+More detail please refer to 1767bf75f9c7bedcd393b4208cf55d6cfe671645.
 
 BTW [Easing functions](http://easings.net/) is a great easing cheat sheet visualization website.
 
