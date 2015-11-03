@@ -98,10 +98,10 @@ There are several rules to help estimate parameter:
 
 ## Firefox bug
 
-When I develop the enhancement, I found a progress event bug in firefox didn't update progress after complete upload and wait server response, chrome do.
+Firefox has a progress event bug, it didn't trigger progress event for the final small pieces resource content loaded, until server finally response.
 
 My environment:
 * Firefox 41.0.2
 * Windows 7
-* 
+
 If you know something kindly let me know.
