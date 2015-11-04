@@ -20,7 +20,8 @@ The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-Fil
 ## Problem
 The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), however any server-side processes like validation or persistence will not effect to the event.
 
-01_no_server.gif
+![No server-side progress](http://atealxt.github.io/images/20151103/01_no_server.gif "No server-side progress")
+
 The progress is hanging on 100% and wait for server's response.
 
 ## Server progress
@@ -85,6 +86,16 @@ $('#fileupload').fileupload({
     progressServerDecayExp: 2
 });
 ```
+
+Examples:
+
+progressServerRate: 0.4, progressServerDecayExp:2
+
+![rate=0.4 and exp=2](http://atealxt.github.io/images/20151103/02_server_0p4_2.gif "rate=0.4 and exp=2")
+
+progressServerRate: 0.5, progressServerDecayExp:3.5
+
+![rate=0.5 and exp=3.5](http://atealxt.github.io/images/20151103/03_server_0p5_3p5.gif "rate=0.5 and exp=3.5")
 
 More detail please refer to commit [1767bf7](https://github.com/atealxt/jQuery-File-Upload/commit/1767bf75f9c7bedcd393b4208cf55d6cfe671645).
 
