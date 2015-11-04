@@ -1,13 +1,13 @@
 ---
 layout: default
-title: File Upload Progress Server Estimation
+title: File Upload Server Progress Estimation
 description: Enhance jQuery File Upload progress event, estimate server side consume time and include in the total progress.
 keywords: blueimp jQuery File Upload plugin, simulate server progress, progressServerRate, progressServerDecayExp
 index: false
 comments: disqus
 ---
 
-# File Upload Progress Server Estimation
+# File Upload Server Progress Estimation
 
 ## jQuery File Upload Plugin
 
