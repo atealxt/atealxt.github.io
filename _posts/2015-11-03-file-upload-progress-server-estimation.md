@@ -103,13 +103,16 @@ BTW [Easing functions](http://easings.net/) is a great easing cheat sheet visual
 
 ## Estimate parameter value
 
-There are several rules to help estimate parameter:
+Note the last anime above, the progress is a little far away 100% before done.
+Sometimes you need to pick a suitble length for progress bar and parameter value. 
+
+Here are several rules can help estimate parameter:
 * Server performance. In general, server is fast than user-end upload.
 * Larger file, slower server response.
 
 ## Firefox bug
 
-Firefox has a progress event bug, it didn't trigger progress event for the final small pieces resource content loaded, until server finally response.
+When I worked on the feature, I found a Firefox progress event bug, it didn't trigger progress event for the final small piece resource content loaded, until the finally response from server.
 
 My environment:
 * Firefox 41.0.2
