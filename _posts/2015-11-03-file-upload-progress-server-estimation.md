@@ -25,9 +25,9 @@ The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/doc
 The progress is hanging on 100% and wait for server's response.
 
 ## Server progress
-We can make the server process asynchronized and return to client instantly. It is the principle to design distribute system, although complicated.
+There are some methods to solve the problem with server-side changes: ajax pooling, web socket, or even redesign the server process totally asynchronized and return to client instantly (actually this is the principle to design distribute system, although complicated).
 
-But what if you just need a simple or temp solution/fix, there is another way which is estimate server consumed time and include into the whole progress - simulate the server progress.
+Any possibly simpler way? Yes, there is a solution only need to modify front-end code, which is estimate server consume time and include into the whole progress - simulate the server progress.
 
 Suppose server spend 30% of times:
 
