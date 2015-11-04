@@ -1,8 +1,8 @@
 ---
 layout: default
 title: File Upload Progress Server Estimation
-description: 
-keywords: 
+description: Enhance jQuery File Upload progress event, estimate server side consume time and include in the total progress.
+keywords: blueimp jQuery File Upload plugin, simulate server progress, progressServerRate, progressServerDecayExp
 index: false
 comments: disqus
 ---
@@ -53,12 +53,12 @@ With it the progress bar will keep 30 percent spaces for server consume.
 
 It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server is responded. 
 
-Obviously [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
+So [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
 
 [pic](https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2)
 y=1/x^2
 
-For use the value update to progress percentage, inverse power function to exponential function:
+In order to use the value to update progress percentage, let's inverse power function to exponential function:
 
 [pic](https://www.google.com/?gws_rd=ssl#q=y%3Dx^2)
 y=x^2
