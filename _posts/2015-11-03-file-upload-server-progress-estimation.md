@@ -99,6 +99,7 @@ progressServerRate: 0.5, progressServerDecayExp:3.5
 
 ![rate=0.5 and exp=3.5](http://atealxt.github.io/images/20151103/03_server_0p5_3p5.gif "rate=0.5 and exp=3.5")
 
+Moreover, you can display a message of process is in either client or server progress at a moment.
 More detail please refer to commit [1767bf7](https://github.com/atealxt/jQuery-File-Upload/commit/1767bf75f9c7bedcd393b4208cf55d6cfe671645).
 
 BTW [Easing functions](http://easings.net/) is a cool website of easing cheat sheet visualization.
