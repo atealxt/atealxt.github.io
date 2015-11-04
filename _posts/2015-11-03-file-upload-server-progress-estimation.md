@@ -71,7 +71,7 @@ data.percent += incr;
 
 Each time calling above codes progress will increase a little bit.
 
-Parameter `progressServerDecayExp`: Server progress exponential decay.
+Parameter `progressServerDecayExp`: Server progress exponential decay (`x` in equation).
 
 ```javascript
 // test code
