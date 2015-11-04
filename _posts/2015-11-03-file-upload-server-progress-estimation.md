@@ -64,7 +64,7 @@ In order to use the value to update progress percentage, let's inverse power fun
 y=x^2
 
 ```javascript
-// source code of calculate increased percentage
+// source code of calculate increase percentage
 var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
 ```
