@@ -53,7 +53,7 @@ With it the progress bar will keep part of spaces for server consuming.
 
 It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server is responded. 
 
-So [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is suitable here.
+[Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is good at this thing.
 
 [pic](https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2)
 y=1/x^2
