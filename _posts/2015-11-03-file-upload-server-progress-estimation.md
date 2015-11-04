@@ -29,7 +29,7 @@ There are some methods to solve the problem with server-side changes: ajax pooli
 
 Any possibly simpler way? Yes, there is a solution only need to modify front-end code, which is estimate server consume time and include into the whole progress - simulate the server progress.
 
-Suppose server will spend 30% of times:
+Suppose server will spend 30% of time:
 
 ```javascript
 // test code
