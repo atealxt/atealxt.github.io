@@ -47,7 +47,7 @@ $('#fileupload').fileupload({
 ```
 
 Parameter `progressServerRate`: estimated server progress percentage.
-With it the progress bar will keep 30 percent spaces for server consume.
+With it the progress bar will keep part of spaces for server consuming.
 
 ## Exponential decay
 
