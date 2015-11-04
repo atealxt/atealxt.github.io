@@ -69,6 +69,8 @@ var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
 ```
 
+Each time calling above codes progress will increase a little bit.
+
 Parameter `progressServerDecayExp`: Server progress exponential decay.
 
 ```javascript
