@@ -55,13 +55,7 @@ It is necessary to use a math function specify the rate of change of the paramet
 
 [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is good at this thing.
 
-[pic](https://www.google.com/?gws_rd=ssl#q=y%3D1%2Fx^2)
-y=1/x^2
-
-In order to use the value to update progress percentage, let's inverse power function to exponential function:
-
-[pic](https://www.google.com/?gws_rd=ssl#q=y%3Dx^2)
-y=x^2
+TODO pic
 
 ```javascript
 // source code of calculate increase percentage
@@ -69,7 +63,7 @@ var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
 ```
 
-Each time calling above codes progress will increase a little bit.
+Each time calling above codes the progress will increase a little bit.
 
 Parameter `progressServerDecayExp`: Server progress exponential decay (`x` in equation).
 
