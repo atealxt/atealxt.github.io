@@ -20,7 +20,11 @@ jQuery File Upload Plugin
 
 The plugin has a feature [Upload progress](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin#how-to-display-upload-progress-with-the-basic-plugin) support [most model browsers](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support#upload-progress), you can create a progress bar indicating the upload progress status.
 
-## Problem
+<h3>
+<a href="#problem" name="problem" class="anchor"><span class="octicon octicon-link"></span></a>
+Problem
+</h3>
+
 The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent), however any server-side processes like validation or persistence will not effect to the event.
 
 ![No server-side progress](http://atealxt.github.io/images/20151103/01_no_server.gif "No server-side progress")
