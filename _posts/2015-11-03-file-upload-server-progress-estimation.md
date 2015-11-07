@@ -56,18 +56,16 @@ It is necessary to use a math function specify the rate of change of the paramet
 
 ![Exponential decay](http://atealxt.github.io/images/20151103/04_exponential_decay_2.png "Exponential decay")
 
-```javascript
-// source code of calculate increase percentage
+<pre><code>// source code of calculate increase percentage
 var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
-```
+</code></pre>
 
 Each time calling above codes the progress will increase a little bit, accelerated speed depends on the exponent parameter.
 
 Parameter `progressServerDecayExp`: Server progress exponential decay (the exponent of equation).
 
-```javascript
-// test code
+<pre><code>// test code
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -80,7 +78,7 @@ $('#fileupload').fileupload({
     progressServerRate: 0.3,
     progressServerDecayExp: 2
 });
-```
+</code></pre>
 
 Examples:
 
