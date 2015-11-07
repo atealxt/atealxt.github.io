@@ -118,8 +118,10 @@ Note the last anime above, the progress is a little far away 100% before done.
 Sometimes you need to pick a suitble length for progress bar and parameter value. 
 
 Here are several rules can help estimate parameter:
-* Server performance. In general, server is fast than user-end upload.
-* Larger file, slower server response.
+<ul>
+  <li>Server performance. In general, server is fast than user-end upload.</li>
+  <li>Larger file, slower server response.</li>
+</ul>
 
 <h3>
 <a href="#firefox" name="firefox" class="anchor"><span class="octicon octicon-link"></span></a>
@@ -129,7 +131,9 @@ Firefox
 When I worked on the feature, I found a Firefox progress event bug, it didn't trigger progress event for the final small piece resource content loaded, until the finally response from server.
 
 My environment:
-* Firefox 41.0.2
-* Windows 7
+<ul>
+  <li>Firefox 41.0.2</li>
+  <li>Windows 7</li>
+</ul>
 
 If you know something kindly let me know.
