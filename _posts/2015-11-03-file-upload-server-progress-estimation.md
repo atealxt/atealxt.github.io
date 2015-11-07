@@ -66,7 +66,7 @@ It is necessary to use a math function specify the rate of change of the paramet
 
 [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is good at this thing.
 
-![Exponential decay](http://atealxt.github.io/images/20151103/04_exponential_decay_2.png "Exponential decay")
+![Exponential decay](http://atealxt.github.io/images/20151103/04_exponential_decay_3.png "Exponential decay")
 
 <pre><code>// source code of calculate increase percentage
 var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
