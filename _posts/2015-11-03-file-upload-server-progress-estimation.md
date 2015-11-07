@@ -55,7 +55,7 @@ It is necessary to use a math function specify the rate of change of the paramet
 
 [Exponential Decay](https://en.wikipedia.org/wiki/Exponential_decay) is good at this thing.
 
-TODO pic
+![Exponential decay](http://atealxt.github.io/images/20151103/04_exponential_decay_2.png "Exponential decay")
 
 ```javascript
 // source code of calculate increase percentage
@@ -63,9 +63,9 @@ var incr = Math.pow((1 - data.percent), data.progressServerDecayExp);
 data.percent += incr;
 ```
 
-Each time calling above codes the progress will increase a little bit.
+Each time calling above codes the progress will increase a little bit, accelerated speed depends on the exponent parameter.
 
-Parameter `progressServerDecayExp`: Server progress exponential decay (`x` in equation).
+Parameter `progressServerDecayExp`: Server progress exponential decay (the exponent of equation).
 
 ```javascript
 // test code
