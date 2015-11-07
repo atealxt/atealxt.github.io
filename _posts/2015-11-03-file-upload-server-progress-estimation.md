@@ -31,7 +31,11 @@ The progress is based on [ProgressEvent](https://developer.mozilla.org/en-US/doc
 
 The progress is hanging on 100% and wait for server's response.
 
-## Server progress
+<h3>
+<a href="#server-progress" name="server-progress" class="anchor"><span class="octicon octicon-link"></span></a>
+Server Progress
+</h3>
+
 There are some methods to solve the problem with server-side changes: ajax pooling, web socket, or even redesign the server process totally asynchronized and return to client instantly (actually this is the principle to design distribute system, although complicated).
 
 Any possibly simpler way? Yes, there is a solution only need to modify front-end code, which is estimate server consume time and include into the whole progress - simulate the server progress.
@@ -55,7 +59,10 @@ $('#fileupload').fileupload({
 Parameter `progressServerRate`: estimated server progress percentage.
 With it the progress bar will keep part of spaces for server consuming.
 
-## Exponential decay
+<h3>
+<a href="#exponential-decay" name="exponential-decay" class="anchor"><span class="octicon octicon-link"></span></a>
+Exponential Decay
+</h3>
 
 It is necessary to use a math function specify the rate of change of the parameter over time. We don't want server progress finishes in constant time, because anyway there is no way to know the actual server consumed time, you can't really update the progress to 100% ever unless the server is responded. 
 
@@ -102,7 +109,10 @@ More detail please refer to commit [1767bf7](https://github.com/atealxt/jQuery-F
 
 BTW [Easing functions](http://easings.net/) is a cool website of easing cheat sheet visualization.
 
-## Estimate parameter value
+<h3>
+<a href="#estimate-parameter-value" name="estimate-parameter-value" class="anchor"><span class="octicon octicon-link"></span></a>
+Estimate Parameter Value
+</h3>
 
 Note the last anime above, the progress is a little far away 100% before done.
 Sometimes you need to pick a suitble length for progress bar and parameter value. 
@@ -111,7 +121,10 @@ Here are several rules can help estimate parameter:
 * Server performance. In general, server is fast than user-end upload.
 * Larger file, slower server response.
 
-## Firefox bug
+<h3>
+<a href="#firefox" name="firefox" class="anchor"><span class="octicon octicon-link"></span></a>
+Firefox
+</h3>
 
 When I worked on the feature, I found a Firefox progress event bug, it didn't trigger progress event for the final small piece resource content loaded, until the finally response from server.
 
