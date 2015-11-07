@@ -9,7 +9,10 @@ comments: disqus
 
 # File Upload Server Progress Estimation
 
-## jQuery File Upload Plugin
+<h3>
+<a href="#jquery-file-upload-plugin" name="jquery-file-upload-plugin" class="anchor"><span class="octicon octicon-link"></span></a>
+jQuery File Upload Plugin
+</h3>
 
 > [blueimp/jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) is a File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery.
 
