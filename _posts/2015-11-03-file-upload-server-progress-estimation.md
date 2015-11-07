@@ -31,8 +31,7 @@ Any possibly simpler way? Yes, there is a solution only need to modify front-end
 
 Suppose server will spend 30% of time:
 
-```javascript
-// test code
+<pre><code>// test code
 $('#fileupload').fileupload({
     /* ... */
     progressall: function (e, data) {
@@ -44,7 +43,7 @@ $('#fileupload').fileupload({
     },
     progressServerRate: 0.3
 });
-```
+</code></pre>
 
 Parameter `progressServerRate`: estimated server progress percentage.
 With it the progress bar will keep part of spaces for server consuming.
