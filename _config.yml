@@ -1,3 +1,4 @@
 pygments: true
 gems:
   - jekyll-sitemap
+  - jekyll-feed
