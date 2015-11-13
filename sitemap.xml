@@ -1,41 +1,29 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-<url>
-  <loc>http://atealxt.github.io/</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2015/11/03/file-upload-server-progress-estimation.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2015/02/28/search-result-order-issue-1.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2015/01/20/quartz-clustering.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2014/11/24/document-grouping-problem.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2014/10/09/hows-website-with-urlrewritefilter-leak-xss-injection.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2014/09/25/how-to-verify-elasticsearch-shard.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2014/09/11/search-training.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2014/08/20/architecture-of-search-platform.html</loc>
-</url>
-<url>
-  <loc>http://atealxt.github.io/2014/07/25/stolen-mobile-and-security.html</loc>
-</url>
+  <url>
+    <loc>https://atealxt.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% for post in site.posts %}
+  {% if post.index %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
+    {% if post.lastmod == null %}
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    {% else %}
+    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+    {% endif %}
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {% endif %}
+  {% endfor %}
 </urlset>
