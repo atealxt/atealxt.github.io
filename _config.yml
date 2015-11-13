@@ -2,5 +2,5 @@ pygments: true
 gems:
   - jekyll-sitemap
   - jekyll-feed
-url: "http://atealxt.github.io"
+url: "https://atealxt.github.io"
 baseurl: ""
