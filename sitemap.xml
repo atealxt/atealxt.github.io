@@ -16,11 +16,6 @@ layout: null
   {% if post.index %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
-    {% if post.lastmod == null %}
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-    {% else %}
-    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-    {% endif %}
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
