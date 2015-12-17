@@ -4,3 +4,6 @@ gems:
   - jekyll-feed
 url: "https://atealxt.github.io"
 baseurl: ""
+title: "Luis Ashurei's personal website"
+description: "Luis Ashurei's personal website at GitHub Page"
+keywords: "Luis Ashurei, GitHub, Blog"
