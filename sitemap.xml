@@ -8,7 +8,7 @@ layout: null
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://atealxt.github.io/</loc>
+    <loc>{{ site.url }}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
