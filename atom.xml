@@ -1,0 +1,27 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>Luis Ashurei</title>
+  <subtitle>Luis Ashurei's personal website Atom feed</subtitle>
+  <link href="{{ site.url }}/atom.xml" rel="self"/>
+  <link href="{{ site.url }}"/>
+  <id>{{ site.url }}</id>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+
+  {% for post in site.posts %}
+  {% if post.index %}
+  <entry>
+    <id>{{ site.url }}{{ site.baseurl }}{{ post.url }}</id>
+    <link href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"/>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <title>{{ post.title }}</title>
+    <summary>{{ page.description }}</summary>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endif %}
+  {% endfor %}
+ 
+</feed>
