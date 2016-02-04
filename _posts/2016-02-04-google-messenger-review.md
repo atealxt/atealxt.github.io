@@ -69,7 +69,7 @@ Problem 5 - So Many History Records
 
 ![So many history records](http://atealxt.github.io/images/20160204/5_history.png "So many history records")
 
-From the picture I get that I started using Hangouts from 2014, there are so many history messages, and it even doesn't have a scrollbar on UI.
+From the picture I get that I started use Hangouts from 2014, there are so many history messages, and it even doesn't have a scrollbar on UI.
 
 <h3>
 <a href="#problem6" name="problem6" class="anchor"><span class="octicon octicon-link"></span></a>
