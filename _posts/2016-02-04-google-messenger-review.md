@@ -26,7 +26,7 @@ I'm happy to keep it and replace Hangouts, however there still some points I wan
 Problem 1 - Phone Stored Messages
 </h3>
 
-![Blocked history message](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/1_spam_msg.png "Blocked history message")
+![Blocked history message](http://atealxt.github.io/images/20160204/1_spam_msg.png "Blocked history message")
 
 First of all I open the APP and see huge old messages (please ignore the unknown language/character, and as you may know, yes my living city have a big issue of spam message - faked base station, unscrupulous ads and suspicious sms).
 
@@ -37,7 +37,7 @@ So I realized all blocked number/message from Hangouts are archived not deleted 
 Problem 2 - Easy to Misoperation
 </h3>
 
-![Easy to misoperation](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/2_single_select.png "Easy to misoperation")
+![Easy to misoperation](http://atealxt.github.io/images/20160204/2_single_select.png "Easy to misoperation")
 
 After I choose a item, from picture you can see the icons `Add to Contact` and `Block` are very close to each other, however they have totally opposite meaning. 
 It is highly possible to click the wrong button, especially on small-screen phone or you have big finger.
@@ -47,7 +47,7 @@ It is highly possible to click the wrong button, especially on small-screen phon
 Problem 3 - Block Confirmation
 </h3>
 
-![Block confirmation](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/3_block.png "Block confirmation")
+![Block confirmation](http://atealxt.github.io/images/20160204/3_block.png "Block confirmation")
 
 A confirmation will display if I clicked the block button. 
 I don't know why Google didn't implement it as a "undo" feature directly, maybe they thought confirmation will inform user a better effect. However it doubled my operations.
@@ -58,7 +58,7 @@ I don't know why Google didn't implement it as a "undo" feature directly, maybe 
 Problem 4 - Multiple Selection
 </h3>
 
-![Multiple selection](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/4_double_select.png "Multiple selection")
+![Multiple selection](http://atealxt.github.io/images/20160204/4_double_select.png "Multiple selection")
 
 There is no block option for select multiple items. I have only one word - OMG!
 
@@ -67,7 +67,7 @@ There is no block option for select multiple items. I have only one word - OMG!
 Problem 5 - So Many History Records
 </h3>
 
-![So many history records](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/5_history.png "So many history records")
+![So many history records](http://atealxt.github.io/images/20160204/5_history.png "So many history records")
 
 From the picture I get that I started using Hangouts from 2014, there are so many history messages, and it even doesn't have a scrollbar on UI.
 
@@ -76,7 +76,7 @@ From the picture I get that I started using Hangouts from 2014, there are so man
 Problem 6 - Blocked Numbers
 </h3>
 
-![Blocked numbers](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/6_blocked.png "Blocked numbers")
+![Blocked numbers](http://atealxt.github.io/images/20160204/6_blocked.png "Blocked numbers")
 
 Just list the numbers. No search function, no import and export, no backup.
 BTW I asked Hangouts team if they have [export feature](https://productforums.google.com/forum/#!topic/hangouts/R8M3wagFlic;context-place=topicsearchin/hangouts/sync$20blocked) (answer was no), unfortunately Google Messenger doesn't have this feature either.
@@ -86,7 +86,7 @@ BTW I asked Hangouts team if they have [export feature](https://productforums.go
 Problem 7 - No Advanced Block Option
 </h3>
 
-![No advanced block option](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/7_faked_number.png "No advanced block option")
+![No advanced block option](http://atealxt.github.io/images/20160204/7_faked_number.png "No advanced block option")
 
 Spams are varied - some of numbers are mobile, some are likely from service provider; some real, some faked; some long, some short.
 
