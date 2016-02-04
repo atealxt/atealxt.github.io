@@ -3,7 +3,7 @@ layout: default
 title: Review - Google Messenger
 description: My experience and review on Google Messenger Android APP.
 keywords: Google Messenger Review, block number, import export history, Google Hangouts, Messaging
-index: false
+index: true
 comments: disqus
 ---
 
@@ -87,6 +87,8 @@ Problem 7 - No Advanced Block Option
 </h3>
 
 ![No advanced block option](https://github.com/atealxt/atealxt.github.io/blob/master/images/20160204/7_faked_number.png "No advanced block option")
+
+Spams are varied - some of numbers are mobile, some are likely from service provider; some real, some faked; some long, some short.
 
 Since my living area have terrible spam problem, I have to close whole notification of the APP.
 I'm wondering if it can provide a smarter way to block number, like block by number startwith/endwith, regular expression, message content etc. (I know there must have some powerful apps on Google Play, I just didn't trust 3rd message Apps yet).
