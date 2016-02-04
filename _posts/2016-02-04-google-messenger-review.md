@@ -30,7 +30,7 @@ Problem 1 - Phone Stored Messages
 
 First of all I open the APP and see huge old messages (please ignore the unknown language/character, and as you may know, yes my living city have a big issue of spam message - faked base station, unscrupulous ads and suspicious sms).
 
-So I realized all blocked number/message from Hangouts are archived not deleted actually, I have to delete them again each by each. Actually they could develop a migration feature from Hangouts (or redesign a better blocked message storage).
+So I realized all blocked number/message from Hangouts are archived not deleted actually, I have to delete them again each by each. Actually they could develop a migration feature from Hangouts (or redesign a better blocked message store way).
 
 <h3>
 <a href="#problem2" name="problem2" class="anchor"><span class="octicon octicon-link"></span></a>
