@@ -3,7 +3,7 @@ layout: default
 title: Gini Impurity Calculator
 description: Online Gini impurity javascript calculator.
 keywords: Gini impurity calculator, Gini index calculator, online calculator
-index: false
+index: true
 comments: disqus
 ---
 <h3>
@@ -15,13 +15,12 @@ Per <a href="https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity"
 Measure how often a randomly chosen element from the set would be incorrectly labeled.
 </p>
 <p>
-It's another way to measure impurity degree, alternative of Entropy. <br/>
-Used in Decision tree learning algorithm - by the CART (classification and regression tree) algorithm.
-</p>
-
-<p>
 <img src="https://upload.wikimedia.org/math/a/6/5/a6570d9b19fc6bb955af3de7bc77f7b0.png" alt="I_{G}(f) = \sum_{i=1}^{m} f_i (1-f_i) = \sum_{i=1}^{m} (f_i - {f_i}^2) = \sum_{i=1}^m f_i - \sum_{i=1}^{m} {f_i}^2
  = 1 - \sum^{m}_{i=1} {f_i}^{2} = \sum_{i\neq k}f_i f_k " class="mwe-math-fallback-image-inline tex">
+</p>
+<p>
+It's another way to measure impurity degree, alternative of Entropy. <br/>
+Used in Decision tree learning algorithm - by the CART (classification and regression tree) algorithm.
 </p>
 
 <h3>
@@ -30,7 +29,7 @@ Example
 </h3>
 
 <p>
-A example from <a href="http://people.revoledu.com/kardi/tutorial/DecisionTree/how-to-measure-impurity.htm#GiniIndex" target="_blank">revoledu</a>:<br/>
+An example from <a href="http://people.revoledu.com/kardi/tutorial/DecisionTree/how-to-measure-impurity.htm#GiniIndex" target="_blank">revoledu</a>:<br/>
 Given that Prob (Bus) = 0.4, Prob (Car) = 0.3 and Prob (Train) = 0.3, we can now compute Gini index as 
 </p>
 <blockquote>
