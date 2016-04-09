@@ -1,0 +1,89 @@
+---
+layout: default
+title: Gini Impurity Calculator
+description: Online Gini impurity javascript calculator.
+keywords: Gini impurity calculator, Gini index calculator, online calculator
+index: false
+comments: disqus
+---
+<h3>
+<a href="#gini-impurity-calculator" name="gini-impurity-calculator" class="anchor"><span class="octicon octicon-link"></span></a>
+{{ page.title }}
+</h3>
+<p>
+Per <a href="https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity" target="_blank">WIKI</a>:
+Measure how often a randomly chosen element from the set would be incorrectly labeled. 
+It's another way to measure impurity degree, alternative of Entropy. 
+Used in Decision tree learning algorithm - by the CART (classification and regression tree) algorithm.
+</p>
+
+<p>
+<img src="https://upload.wikimedia.org/math/a/6/5/a6570d9b19fc6bb955af3de7bc77f7b0.png" alt="I_{G}(f) = \sum_{i=1}^{m} f_i (1-f_i) = \sum_{i=1}^{m} (f_i - {f_i}^2) = \sum_{i=1}^m f_i - \sum_{i=1}^{m} {f_i}^2
+ = 1 - \sum^{m}_{i=1} {f_i}^{2} = \sum_{i\neq k}f_i f_k " class="mwe-math-fallback-image-inline tex">
+</p>
+
+<h3>
+<a href="#example" name="example" class="anchor"><span class="octicon octicon-link"></span></a>
+Example
+</h3>
+
+<p>
+A example from <a href="http://people.revoledu.com/kardi/tutorial/DecisionTree/how-to-measure-impurity.htm#GiniIndex" target="_blank">revoledu</a>:
+Given that Prob (Bus) = 0.4, Prob (Car) = 0.3 and Prob (Train) = 0.3, we can now compute Gini index as 
+</p>
+<blockquote>
+  <p>Gini Index = 1 &ndash; (0.4^2 + 0.3^2 + 0.3^2) = 0.660 </p>
+</blockquote>
+
+<h3>
+<a href="#calculator" name="calculator" class="anchor"><span class="octicon octicon-link"></span></a>
+Calculator
+</h3>
+
+<p>
+
+<form>
+<textarea id="input" name="textarea" rows="5" cols="3">
+4
+3
+3
+</textarea>
+<input type="button" id="calc" value="calculate"/>
+<input type="button" id="clear" value="clear"/>
+<input type="reset" id="reset" value="reset"/>
+</form>
+<div id="output"></div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+<!--<script type="text/javascript" src="jquery-1.12.3.min.js"></script>-->
+<script type="text/javascript">
+
+var $input = $('#input'), $output = $('#output');
+
+$('#clear').bind( "click", function() {
+	$input.val('');  
+	$output.html("");
+});
+
+$('#calc').bind( "click", function() {
+	var inputs = $input.val().split('\n');
+	if (!inputs) {
+		return;
+	}
+	if (inputs[inputs.length-1] == '') {
+		inputs = inputs.slice(0, inputs.length - 1);
+	}
+	var sum = 0;
+	for (var i in inputs) {
+		sum += parseFloat(inputs[i]);
+	}
+	var gini = 1;
+	for (var i in inputs) {
+		gini -= Math.pow(parseFloat(inputs[i])/sum, 2);
+	}
+	$output.html("Gini impurity = " + gini);
+});
+
+</script>
+
+</p>
