@@ -7,19 +7,16 @@ index: false
 comments: disqus
 ---
 
-<input type="button" id="calc" value="calculate"/>
-<input type="button" id="clear" value="clear"/>
-<input type="reset" id="reset" value="reset"/>
-
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script type="text/javascript">
 
-$(document).ready(function () {
 
-	$('#clear').bind( "click", function() {
-		alert("1");
-	});
-
-});
+function abc(){
+	alert("abc");
+}
 
 </script>
+
+<input type="button" id="calc" value="calculate" onclick="abc()"/>
+<input type="button" id="clear" value="clear"/>
+<input type="reset" id="reset" value="reset"/>
