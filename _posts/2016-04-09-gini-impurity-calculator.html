@@ -26,32 +26,12 @@ Input data: each line represent the probability/frequency of a group.
 
 $(document).ready(function () {
 
-	var $input = $('#input'), $output = $('#output');
-
 	$('#clear').bind( "click", function() {
 		alert("1");
-		$input.val('');  
-		$output.html("");
 	});
 
 	$('#calc').bind( "click", function() {
 		alert("2");
-		var inputs = $input.val().split('\n');
-		if (!inputs) {
-			return;
-		}
-		if (inputs[inputs.length-1] == '') {
-			inputs = inputs.slice(0, inputs.length - 1);
-		}
-		var sum = 0;
-		for (var i in inputs) {
-			sum += parseFloat(inputs[i]);
-		}
-		var gini = 1;
-		for (var i in inputs) {
-			gini -= Math.pow(parseFloat(inputs[i])/sum, 2);
-		}
-		$output.html("Gini impurity = " + gini);
 	});
 });
 
