@@ -109,28 +109,28 @@ return result
 
 Test code to simulate attacker again:
 
-<pre><code>	static class Hack implements Runnable {
-		@Override
-		public void run() {
-			try (Jedis jedis = new Jedis("localhost");) {
-				String script = jedis.scriptLoad(SCRIPT_LIMIT_PER_PERIOD);
-				Object result = jedis.evalsha(script, 1, "test", "5", "10");
-				System.out.println("Request success " + result);
-			} catch (Exception e) {
-				System.err.println("Request failed. " + e.getMessage());
-			}
-			latch.countDown();
+<pre><code>static class Hack implements Runnable {
+	@Override
+	public void run() {
+		try (Jedis jedis = new Jedis("localhost");) {
+			String script = jedis.scriptLoad(SCRIPT_LIMIT_PER_PERIOD);
+			Object result = jedis.evalsha(script, 1, "test", "5", "10");
+			System.out.println("Request success " + result);
+		} catch (Exception e) {
+			System.err.println("Request failed. " + e.getMessage());
 		}
+		latch.countDown();
 	}
+}
 
-	static String SCRIPT_LIMIT_PER_PERIOD = ""
-			+ "local current = tonumber(redis.call(\"get\", KEYS[1])) \n"
-			+ "if (current ~= nil and current >= tonumber(ARGV[1])) then \n"
-			+ "	error(\"too many requests\") \n"
-			+ "end \n"
-			+ "local result = redis.call(\"incr\", KEYS[1]) \n"
-			+ "redis.call(\"expire\", KEYS[1], tonumber(ARGV[2])) \n"
-			+ "return result";
+static String SCRIPT_LIMIT_PER_PERIOD = ""
+	+ "local current = tonumber(redis.call(\"get\", KEYS[1])) \n"
+	+ "if (current ~= nil and current >= tonumber(ARGV[1])) then \n"
+	+ "	error(\"too many requests\") \n"
+	+ "end \n"
+	+ "local result = redis.call(\"incr\", KEYS[1]) \n"
+	+ "redis.call(\"expire\", KEYS[1], tonumber(ARGV[2])) \n"
+	+ "return result";
 </code></pre>
 
 <pre><code>//Run result:
