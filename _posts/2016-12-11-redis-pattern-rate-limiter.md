@@ -33,7 +33,7 @@ ELSE
 END
 </code></pre>
 
-It remembers each IP's requests per second, only able to hit 10 times.
+It remembers each IP's requests per second, only able to hit 10 times.<br />
 It will work perfectly OK in general cases, however might be invalid on heavy traffic system/API or protected from attack. Think about when the request count haven't over the quota, if huge of requests visit now at the same time, most/many of those may cross the validation. The time window exists between after the checking and updating the counter.
 
 ![Concurrent Problem](http://atealxt.github.io/images/20161211/concurrent.png "Concurrent Problem")
