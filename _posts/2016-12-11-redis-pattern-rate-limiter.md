@@ -157,7 +157,7 @@ Above script still has 2 potential concern: <br />
 
 * Expire can be extends automatically if checked key doesn't contains timestamp.
 
-Every time allowed a request will reset expire again, the whole timeout is not accurate.
+Every time allowed a request will reset expire again, the whole timeout is not accurate. <br />
 To fix this, client must pass the timestamp within part of the key to avoid check duplicated key, for example:
 
 <pre><code>//allow 5 times per hour
@@ -186,7 +186,7 @@ local result = redis.call(\"incr\", KEYS[1])
 return result
 </code></pre>
 
-The advanced version firstly check and set the key only if not exists, this will fix the reset timeout issue.
+The advanced version firstly check and set the key only if not exists, this will fix the reset timeout issue. <br />
 Note that in the middle, it still have a check whether key is exist, which for key can be just expire at that time technically.
 
 <h3>
@@ -194,5 +194,5 @@ Note that in the middle, it still have a check whether key is exist, which for k
 Redis Module
 </h3>
 
-Redis 4.0 (currently in Beta) will introduce a new feature `Module`, is add-ons to extend write use cases in native scope.
+Redis 4.0 (currently in Beta) will introduce a new feature `Module`, is add-ons to extend write use cases in native scope. <br />
 Currently there is already have one for rate limiter implementation at [brandur/redis-cell](https://github.com/brandur/redis-cell), which you can keep eye on it.
