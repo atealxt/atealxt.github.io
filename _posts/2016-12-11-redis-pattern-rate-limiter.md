@@ -3,7 +3,7 @@ layout: default
 title: Redis Pattern - Rate limiter
 description: Correct way to use rate limiter pattern with Redis.
 keywords: Redis Pattern, Rate limiter, command INCR, Lua script
-index: false
+index: true
 comments: disqus
 ---
 
@@ -153,10 +153,10 @@ The followed additional 5 requests are successful blocked.
 Advanced Script
 </h3>
 
-Above script still has 2 potiencial concern:
+Above script still has 2 potential concern:
 * Expire can be extends automatically if checked key doesn't contains timestamp.
 
-Everytime allowed a request will reset expire again, the whole timeout is not accurate.
+Every time allowed a request will reset expire again, the whole timeout is not accurate.
 To fix this, client must pass the timestamp within part of the key to avoid check duplicated key, for example:
 
 <pre><code>//allow 5 times per hour
@@ -164,7 +164,7 @@ eval "${script}" 1 test_2016121102 5 3600</code></pre>
 
 * If timeout is a large value, the expired key can be removed by Redis automatically at a very late time.
 
-This maybe a concern for huge unique vistor system.
+This maybe a concern for huge unique visitors system.
 
 It is possible to edit the script a little bit to fix the 2 issues:
 
@@ -187,3 +187,12 @@ return result
 
 The advanced version firstly check and set the key only if not exists, this will fix the reset timeout issue.
 Note that in the middle, it still have a check whether key is exist, which for key can be just expire at that time technically.
+
+
+<h3>
+<a href="#redis-module" name="redis-module" class="anchor"><span class="octicon octicon-link"></span></a>
+Redis Module
+</h3>
+
+Redis 4.0 (currently in Beta) will introduce a new feature `Module`, is add-ons to extend write use cases in native scope.
+Currently there is already have one for rate limiter implementation at [brandur/redis-cell](https://github.com/brandur/redis-cell), which you can keep eye on it.
