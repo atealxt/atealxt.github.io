@@ -16,7 +16,7 @@ Rate limiter
 
 > [Redis](https://redis.io/) is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
-There is a Pattern called `Rate limiter` in the [command INCR page](https://redis.io/commands/incr#pattern-rate-limiter), what is ability to be a counter limit the rate at which an operation can be performed.
+There is a Pattern called `Rate limiter` in the [command INCR page](https://redis.io/commands/incr#pattern-rate-limiter), what is Redis ability to be a counter limit the rate an operation can be performed.
 
 <pre><code>FUNCTION LIMIT_API_CALL(ip)
 ts = CURRENT_UNIX_TIME()
