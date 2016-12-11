@@ -154,6 +154,7 @@ Advanced Script
 </h3>
 
 Above script still has 2 potential concern:
+
 * Expire can be extends automatically if checked key doesn't contains timestamp.
 
 Every time allowed a request will reset expire again, the whole timeout is not accurate.
