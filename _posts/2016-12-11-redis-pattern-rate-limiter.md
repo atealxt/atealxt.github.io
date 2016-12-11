@@ -187,12 +187,12 @@ return result
 </code></pre>
 
 The advanced version firstly check and set the key only if not exists, this will fix the reset timeout issue. <br />
-Note that in the middle, it still have a check whether key is exist, which for key can be just expire at that time technically.
+Note that in the middle, it still have a check whether key is exist, which for key can be just expire at that time in technically.
 
 <h3>
 <a href="#redis-module" name="redis-module" class="anchor"><span class="octicon octicon-link"></span></a>
 Redis Module
 </h3>
 
-Redis 4.0 (currently in Beta) will introduce a new feature `Module`, is add-ons to extend write use cases in native scope. <br />
+Redis 4.0 (currently in Beta) will introduce a new feature `Module`, a add-ons to extend write use cases in native scope. <br />
 Currently there is already have one for rate limiter implementation at [brandur/redis-cell](https://github.com/brandur/redis-cell), which you can keep eye on it.
