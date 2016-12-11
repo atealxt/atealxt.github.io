@@ -4,4 +4,4 @@ gems:
   - jekyll-feed
 url: "https://atealxt.github.io"
 baseurl: ""
-highlighter:rouge
+highlighter: "rouge"
