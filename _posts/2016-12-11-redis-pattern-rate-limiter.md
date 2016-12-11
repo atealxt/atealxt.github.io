@@ -153,7 +153,7 @@ The followed additional 5 requests are successful blocked.
 Advanced Script
 </h3>
 
-Above script still has 2 potential concern:
+Above script still has 2 potential concern: <br />
 
 * Expire can be extends automatically if checked key doesn't contains timestamp.
 
@@ -188,7 +188,6 @@ return result
 
 The advanced version firstly check and set the key only if not exists, this will fix the reset timeout issue.
 Note that in the middle, it still have a check whether key is exist, which for key can be just expire at that time technically.
-
 
 <h3>
 <a href="#redis-module" name="redis-module" class="anchor"><span class="octicon octicon-link"></span></a>
