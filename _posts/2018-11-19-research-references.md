@@ -3,7 +3,7 @@ layout: default
 title: Some Study References
 description: References not directly used in my Master's Thesis.
 keywords: references, cloud storage, time series forecasting, erasure coding
-index: false
+index: true
 comments: disqus
 ---
 
