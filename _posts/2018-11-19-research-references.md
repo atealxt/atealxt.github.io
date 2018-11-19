@@ -53,7 +53,7 @@ https://www.cockroachlabs.com/blog/limits-of-the-cap-theorem/
 Cloud Storage Durability <br>
 https://www.backblaze.com/blog/cloud-storage-durability/
 
-Object storage vs Block storage services
+Object storage vs Block storage services <br>
 https://www.digitalocean.com/community/tutorials/object-storage-vs-block-storage-services
 
 <h3>
@@ -66,6 +66,9 @@ https://pdos.csail.mit.edu/6.824/papers/raft-faq.txt
 
 Raft算法的理解 <br>
 https://mp.weixin.qq.com/s/t1f1AmWw6ir7rWTiNLHyBQ
+
+分布式系统的一致性协议之 2PC 和 3PC <br>
+http://matt33.com/2018/07/08/distribute-system-consistency-protocol/
 
 Apache Zookeeper vs Etcd3 <br>
 https://dzone.com/articles/apache-zookeeper-vs-etcd3
@@ -88,6 +91,7 @@ Snitch putting consistency back s3<br>
 https://blog.box.com/blog/snitch-putting-consistency-back-s3/
 
 Erasure Coding <br>
+https://www.akalin.com/intro-erasure-codes <br>
 http://www.nephostechnologies.com/blog/object-storage-and-erasure-coding-what%E2%80%99s-it-all-about <br>
 http://searchstorage.techtarget.com/definition/erasure-coding <br>
 http://www.computerweekly.com/feature/Erasure-coding-versus-RAID-as-a-data-protection-method <br>
@@ -96,10 +100,9 @@ http://www.snia.org/sites/default/files/SDC15_presentations/datacenter_infra/She
 http://www.snia.org/sites/default/files/Wesley_Leggette-Next_Gen-Erasurev4_EDIT.pdf <br>
 http://ece.iisc.ernet.in/~vijay/pdfs/openday2017.pdf <br>
 https://blog.cloudera.com/blog/2015/09/introduction-to-hdfs-erasure-coding-in-apache-hadoop/ <br>
-http://www.taocloudx.com/index.php?a=shows&catid=4&id=104 GlusterFS纠珊码基础 <br>
+http://www.taocloudx.com/index.php?a=shows&catid=4&id=104 <br>
 http://www.snia.org/sites/default/files/Wesley_Leggette-Next_Gen-Erasurev4_EDIT.pdf <br>
 https://blogs.dropbox.com/tech/2018/06/extending-magic-pocket-innovation-with-the-first-petabyte-scale-smr-drive-deployment/
-
 
 <h3>
 <a href="#forecasting" name="forecasting" class="anchor"><span class="octicon octicon-link"></span></a>
@@ -133,9 +136,8 @@ Time series database <br>
 https://blog.timescale.com/what-the-heck-is-time-series-data-and-why-do-i-need-a-time-series-database-dcf3b1b18563 <br>
 https://blog.timescale.com/timescaledb-vs-6a696248104e
 
-Exp. sharing
+Exp. sharing <br>
 http://www.infoq.com/cn/articles/facebook-open-source-mass-forecasting-system-prophet <br>
 http://blog.zhanglun.me/2017/06/13/%E5%A4%A7%E8%88%AA%E6%9D%AF%E2%80%9C%E6%99%BA%E9%80%A0%E6%89%AC%E4%B8%AD%E2%80%9D%E7%94%B5%E5%8A%9BAI%E5%A4%A7%E8%B5%9B%E5%8F%82%E8%B5%9B%E7%BB%8F%E9%AA%8C/ <br>
 http://www.infoq.com/cn/articles/application-of-spark--in-jingdong-supply-chain-forecasting
-
 
