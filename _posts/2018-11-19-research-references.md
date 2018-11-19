@@ -14,7 +14,7 @@ comments: disqus
 Headline
 </h3>
 
-Two years not update, time spent at work hard, read a Master degree, and get a son!
+Two years not update, time spent at work, read a Master degree, and get a son!
 
 I will restart writing, here beginning with some valuable links not directly refer in my thesis.
 
