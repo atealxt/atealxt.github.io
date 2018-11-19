@@ -38,11 +38,11 @@ https://status.cloud.google.com/incident/cloud-networking/18012
 Azure Down. 2018.9. <br>
 https://www.datacenterdynamics.com/news/microsoft-azure-suffers-outage-after-cooling-issue/
 
-Google Cloud vs AWS <br>
-https://kinsta.com/blog/google-cloud-vs-aws/
-
 Snapchat down <br>
 https://www.recode.net/2017/2/7/14526832/snap-ipo-snapchat-s1-wall-street-business-google-cloud
+
+Google Cloud vs AWS <br>
+https://kinsta.com/blog/google-cloud-vs-aws/
 
 Cloud Service Map For AWS and Azure <br>
 https://azure.microsoft.com/en-us/blog/cloud-service-map-for-aws-and-azure-available-now/
