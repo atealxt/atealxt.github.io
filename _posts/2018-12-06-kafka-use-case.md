@@ -11,7 +11,7 @@ comments: disqus
 
 <h3>
 <a href="#producer-consumer" name="producer-consumer" class="anchor"><span class="octicon octicon-link"></span></a>
-A Producer-Consumer Program
+Producer-Consumer Program
 </h3>
 
 We have a program receive messages from outside and dispatch to consumers to handle.
