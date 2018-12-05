@@ -24,9 +24,9 @@ The program is very clear and simple:
 * The file is auto-rolled per day.
 
 The design leaks some drawback, especially with grown of business:
-# Performance. It is bounded to a single file write/read I/O speed.
-# Durability. If the file/disk is broken, program will stop working, history data are lost.
-# Scalability. The program is hard to scale out. 
+1. Performance. It is bounded to a single file write/read I/O speed.
+2. Durability. If the file/disk is broken, program will stop working, history data are lost.
+3. Scalability. The program is hard to scale out. 
 
 The first one can be enhanced with technique like memory cache, disk flush buff, batch size etc. 
 The other two could be solved in split one file to shards with replicates.
