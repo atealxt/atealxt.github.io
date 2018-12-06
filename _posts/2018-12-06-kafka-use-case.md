@@ -43,21 +43,34 @@ It can solve all our 3 problems, with only cost of not much memory.
 
 Benefits to use Kafka here:
 * Kafka will maximally use page cache, which consumers can normally read directly from system memory instead of disk.
-* Data in Kafka can be safety stored to mutiple disks via replication.
+* Data in Kafka can be safety stored to multiple disks via replication.
 * It's possible to scale out Kafka services in multi broker/topic.
 * Data can be easily reread, sharing between other services. Elimination strategy is flexible as well.
 
-Problem solved, everything is damn good! Well..
+Problem solved, perfect!
 
 <h3>
 <a href="#things-learned" name="things-learned" class="anchor"><span class="octicon octicon-link"></span></a>
 What we learned after
 </h3>
 
-After some days stability test and experimental running, we meet some new problems:
-* A
-* B
-* C
+During load test, we surprisingly found use several producers are notable faster than a single one which official API recommended: The producer is sharing a single producer instance across threads will generally be faster than having multiple instances. I didn't write down the detail but it was about 10%~20%, the Kafka version we use was 0.10.
 
+For decoupling the message receive and send, we created a pool batched cache the messages, producer threads are reading messages from pool then send them to Kafka server.
 
+After several weeks running, we monitored sometimes Kafka is stuck in full GC or even OOM, same thing in the program (Process A). It is likely happens when system is being heavily visit, for example huge or large messages are received.
+To fix the issue, a current limiter is setup to protect the memory.
+On the server side, limit produce rate on Kafka config `producer_byte_rate`:
+<pre><code>sh kafka-configs.sh --zookeeper localhost:2181 --alter --add-config 'producer_byte_rate=YOUR_NUMBER_HERE' --entity-type clients --entity-default
+</code></pre>
+On the client side (Process A), a JVM monitor thread is also created to check whether used heap is over threshold. Once Kafka producer is slower than receiver, the protector is triggered, program will firstly try call `system.gc()` explicitly and double check the memory usage, if heap is still almost full, the receiver will be suspended for a while.
+
+The Process A looks like this:
+![Optimized Program](http://atealxt.github.io/images/20181206/producer_consumer-v3.png "Optimized Program")
+
+Until today, the optimized program is running on production for over 6 months, gc is normally in 5-10ms per seconds. And whatever how much messages are coming at the same time, the program will keep running as designed.
+
+Today Kafka has released 2.1.0, far from 0.10.
+The design has 5 part threads in the process, which looks not simple, not cool. I know it.
+Next time I will review the simplify version again, but now let it be.
 
