@@ -19,7 +19,7 @@ We have a program receive messages from outside and dispatch to consumers to han
 ![File version Program](http://atealxt.github.io/images/20181206/producer_consumer-v1.png "File version Program")
 
 The program is very clear and simple:
-* Process A keep receiving message from outside, then write it to a binary file one by one.
+* Process A keep receiving messages from outside, then write them to a binary file one by one.
 * Process B detect and read new messages from the file once arrived, then dispatch it to consumers.
 * The file is auto-rolled per day.
 
