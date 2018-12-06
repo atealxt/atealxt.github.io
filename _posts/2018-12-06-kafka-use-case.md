@@ -21,7 +21,7 @@ We have a program receive messages from outside and dispatch to consumers to han
 The program is very clear and simple:
 * Process A keep receiving messages from outside, then write them to a binary file one by one.
 * Process B detect and read new messages from the file once arrived, then dispatch them to consumers.
-* The file is auto-rolled per day.
+* The file is auto-rolled every day.
 
 The design leaks some drawback, especially with grown of business:
 1. Performance. It is bounded to a single file write/read I/O speed.
