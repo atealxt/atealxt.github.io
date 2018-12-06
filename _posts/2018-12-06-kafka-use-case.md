@@ -66,7 +66,7 @@ On the server side, limit produce rate on Kafka config `producer_byte_rate`:
 On the client side (Process A), a JVM monitor thread is also created to check whether used heap is over threshold. Once Kafka producer is slower than receiver, the protector is triggered, program will firstly try call `system.gc()` explicitly and double check the memory usage, if heap is still almost full, the receiver will be suspended for a while.
 
 The Process A looks like this:
-![Optimized Program](http://atealxt.github.io/images/20181206/producer_consumer-v3.png "Optimized Program")
+![Optimized Program](http://atealxt.github.io/images/20181206/producer_consumer-v2-2.png "Optimized Program")
 
 Until today, the optimized program is running on production for over 6 months, gc is normally in 5-10ms per seconds. And whatever how much messages are coming at the same time, the program will keep running as designed.
 
