@@ -73,6 +73,6 @@ Today the optimized program has running on production for over 6 months, gc is n
 
 PS:<br>
 Now Kafka has released 2.1.0, far from 0.10.
-The design has 5 part threads in the process, which looks not simple, not cool. I know it.
+The design contains 5 part threads in the process, which looks not simple, not cool. I know it.
 Next time I will review the simplify version again, but now let it be.
 
