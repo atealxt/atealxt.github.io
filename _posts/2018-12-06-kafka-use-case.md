@@ -63,7 +63,7 @@ To fix the issue, a current limiter is setup to protect the memory.
 On the server side, limit produce rate on Kafka config `producer_byte_rate`:
 <pre><code>sh kafka-configs.sh --zookeeper localhost:2181 --alter --add-config 'producer_byte_rate=YOUR_NUMBER_HERE' --entity-type clients --entity-default
 </code></pre>
-On the client side (Process A), a JVM monitor thread is also created to check whether used heap is over threshold. Once Kafka producer is slower than receiver, the protector is triggered, program will firstly try call `system.gc()` explicitly, then double check the memory usage, if heap is still almost full, the receiver will stop accept messages for a short time.
+On the client side (Process A), a JVM monitor thread is also created to check whether used heap is over threshold. Once Kafka message producing is slower than receiving, the protect is triggered, program will firstly try call `system.gc()` explicitly, then double check the memory usage, if heap is still almost full, the receiver will stop accept messages for a short time.
 
 The Process A now looks like this:
 
