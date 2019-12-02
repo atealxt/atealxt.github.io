@@ -3,7 +3,7 @@ layout: default
 title: FLINK FORWARD ASIA 2019 参会总结
 description: FLINK FORWARD ASIA 2019 参会总结，Take Away.
 keywords: Apache Flink, Flink Forward, FFA
-index: false
+index: true
 comments: disqus
 ---
 
@@ -44,7 +44,7 @@ Day 1 下午参加的是Flink核心技术分论坛
 
 * Pluggable Shuffle Service and Unaligned Checkpoints <br>
 介绍了2个Flink的优化实践：<br>
-1. Pluggable Shuffle Service：Partition/Task/Task Executor生命周期和资源管理的不足，如非预期回收、作业重度重启、某些场景的集群资源浪费、架构扩展性不足等，并如何使用Shffle Service插件化架构解决（FLIP-31）；
+1. Pluggable Shuffle Service：Partition/Task/Task Executor生命周期和资源管理的不足，如非预期回收、作业重度重启、某些场景的集群资源浪费、架构扩展性不足等，并如何使用Shuffle Service插件化架构解决（FLIP-31）；
 2. 优化原始基于Chandy-Lamport算法的checkpoint机制：把Barrier和部分快照信息持久化存储，加速尤其是存在部分数据计算任务/节点存在瓶颈造成反压或Failover的场景，代价就是引入的持久化存储可能带来的一系列问题，如I/O可能会飙上去；
 
 * Bring Cross DC and Cross Data Source SQL Engine to Apache Flink <br>
