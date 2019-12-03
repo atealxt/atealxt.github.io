@@ -87,3 +87,8 @@ Day 2 也是最后一个上午，转去听了企业实践专场
 参会的大部分都是工程师，没什么大型会议那种上来先整一小时八股文、或厂家大肆宣传的环节，不水，听的比较带感。
 
 比较汗的是没什么仪式，直接开始，也直接结束。第一天下午最后一个议题完了之后，主持人或许是看现场已经走了不少人，pass了收尾环节，直接把剩下坚持到最后的同学们无视了。。。
+
+PS<br>
+官方总结 https://mp.weixin.qq.com/s/JRWq17AQ0vU9YpoTkEGOSg <br>
+PPT下载 https://ververica.cn/developers/flink-forward-asia-2019/
+
