@@ -142,7 +142,7 @@ The production deployment is paused due to COVID-19. Our customer will prepare a
   [spring-cloud-kubernetes-discovery](https://cloud.spring.io/spring-cloud-kubernetes/spring-cloud-kubernetes.html) is still a newborn, framework like Feign are not well supported in it.
 * Service Mesh <br>
   Istio.
-* Microservices Monitor <br>
+* Microservices monitor <br>
   Monitor services in K8s, such as prometheus and grafana.
 * A better K8s <br>
   HA: multi master; independent etcd cluster; a-z zone; pod scheduler policy; operator; <br>
